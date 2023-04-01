@@ -19,7 +19,7 @@ from extensions.long_term_memory.utils.timestamp_parsing import (
 
 
 # === Internal constants (don't change these without good reason) ===
-_CONFIG_PATH = "ltm_config.json"
+_CONFIG_PATH = "extensions/long_term_memory/ltm_config.json"
 _MIN_ROWS_TILL_RESPONSE = 5
 _LAST_BOT_MESSAGE_INDEX = -3
 _LTM_STATS_TEMPLATE = """{num_memories_seen_by_bot} memories are loaded in the bot
