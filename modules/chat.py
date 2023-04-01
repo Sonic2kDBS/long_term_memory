@@ -53,9 +53,9 @@ def generate_chat_prompt(user_input, max_new_tokens, name1, name2, context, chat
     prompt = ''.join(rows)
 
     if also_return_rows:
-        return (prompt, rows)
-
-    return prompt
+        return prompt, rows
+    else:
+        return prompt
 
 def extract_message_from_reply(reply, name1, name2, check):
     next_character_found = False
