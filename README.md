@@ -23,9 +23,6 @@ python server.py --chat --extensions long_term_memory
 
 6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your bot's memories, simply delete the files inside that directory.
 
-## Migration Notes (for those that have been using this extension from the beginning)
-- 
-
 ## Tips for Windows Users (credit to Anons from /g/'s /lmg/)
 - The LTM's extensions's dependencies may override the version of pytorch needed to run your LLMs. If this is the case, try reinstalling the original version of pytorch manually:
 ```bash
