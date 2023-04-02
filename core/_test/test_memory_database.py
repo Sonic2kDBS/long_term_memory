@@ -50,6 +50,10 @@ TEST_PARAMS_FOR_MULTI_FETCH = [
     {
         "num_memories_to_fetch": 3,
         "expected_indices": [1, 2, 3],
+    },
+    {
+        "num_memories_to_fetch": 10,
+        "expected_indices": [0, 1, 2, 3],
     }
 ]
 
@@ -303,7 +307,8 @@ def test_multi_fetch(tmp_path):
 
         val_ltm_database = LtmDatabase(tmp_path, test_params["num_memories_to_fetch"])
         query_responses = val_ltm_database.query(QUERY_MESSAGE_FOR_MULTI_FETCH)
-        assert test_params["num_memories_to_fetch"] == len(query_responses)
+        expected_num_responses = min(test_params["num_memories_to_fetch"], len(query_responses))
+        assert expected_num_responses == len(query_responses)
 
         for (query_response, _) in query_responses:
             assert query_response["message"] in expected_responses

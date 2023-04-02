@@ -63,12 +63,6 @@ class LtmDatabase:
         self.sentence_embedder = SentenceTransformer(
             SENTENCE_TRANSFORMER_MODEL, device="cpu"
         )
-        self.embedding_searcher = NearestNeighbors(
-            n_neighbors=num_memories_to_fetch,
-            algorithm="brute",
-            metric="cosine",
-            n_jobs=-1,
-        )
         self.num_memories_to_fetch = num_memories_to_fetch
 
     def _destroy_and_recreate_database(self, do_sql_drop=False) -> None:
@@ -127,7 +121,7 @@ class LtmDatabase:
     def query(self, query_text: str) -> List[Tuple[Dict[str, str], float]]:
         """Queries for the most similar sentence from the LTM database."""
         # If too few LTM features are loaded, return nothing.
-        if self.message_embeddings.shape[0] < self.num_memories_to_fetch:
+        if self.message_embeddings.shape[0] == 0:
             return []
 
         # Create the query embedding
@@ -135,8 +129,14 @@ class LtmDatabase:
         query_text_embedding = np.expand_dims(query_text_embedding, axis=0)
 
         # Find the most relevant memory's index
-        self.embedding_searcher.fit(self.message_embeddings)
-        (match_scores, embedding_indices) = self.embedding_searcher.kneighbors(
+        embedding_searcher = NearestNeighbors(
+            n_neighbors=min(self.num_memories_to_fetch, self.message_embeddings.shape[0]),
+            algorithm="brute",
+            metric="cosine",
+            n_jobs=-1,
+        )
+        embedding_searcher.fit(self.message_embeddings)
+        (match_scores, embedding_indices) = embedding_searcher.kneighbors(
             query_text_embedding
         )
 
