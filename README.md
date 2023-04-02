@@ -7,7 +7,7 @@ NOTICE: If you have been using this extension on or before 04/01/2023, you shoul
 
 1. Clone [oobabooga's  original repository](https://github.com/oobabooga/text-generation-webui) and follow the instructions until you can chat with a chatbot.
 
-2. Clone this repository directly into the `text-generation-webui/extensions` directory
+2. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `text-generation-webui/extensions` directory
 ```bash
 git clone https://github.com/wawawario2/long_term_memory text-generation-webui/extensions
 ```
