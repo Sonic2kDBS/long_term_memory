@@ -136,7 +136,7 @@ The roadmap will be driven based on user feedback. Potential updates include:
 - Scaling the backend.
 
 ## Migration Instructions 
-NOTICE: If you have been using this extension on or before 04/01/2023, you should run the following steps:
+As of 04/01/2023, this repo has been converted from a fork of oobabooga's repo to a modular extension. You will now work directly out of ooba's repo and clone this extension as a submodule. This will allow you to get updates from ooba more directly. Please follow the following steps:
 1. Back up all your memories in a safe location. They are located in `extensions/long_term_memory/user_data/bot_memories/` Something like this:
 ```bash
 cp -r extensions/long_term_memory/user_data/bot_memories/ ~/bot_memories_backup_for_migration/
