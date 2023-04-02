@@ -147,10 +147,9 @@ cp -r extensions/long_term_memory/user_data/bot_memories/ ~/bot_memories_backup_
 ```
 2. If you have a custom configuration file, back that up too.
 
-3. If you want to convert this repo to oobabooga's original repo, do the following: Change the remote location to oobabooga's original repo, remove the upstream, and checkout the main branch.
+3. If you want to convert this repo to oobabooga's original repo, do the following: Change the remote location to oobabooga's original repo, and checkout the main branch.
 ```bash
 git remote set-url origin https://github.com/oobabooga/text-generation-webui
-git remote remove upstream
 git fetch
 git checkout main
 ```
