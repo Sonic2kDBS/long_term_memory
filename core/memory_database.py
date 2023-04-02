@@ -69,6 +69,7 @@ class LtmDatabase:
             metric="cosine",
             n_jobs=-1,
         )
+        self.num_memories_to_fetch = num_memories_to_fetch
 
     def _destroy_and_recreate_database(self, do_sql_drop=False) -> None:
         """Destroys and re-creates a new LTM database.
@@ -125,8 +126,8 @@ class LtmDatabase:
 
     def query(self, query_text: str) -> List[Tuple[Dict[str, str], float]]:
         """Queries for the most similar sentence from the LTM database."""
-        # If no LTM features are loaded, return nothing.
-        if self.message_embeddings.shape[0] == 0:
+        # If too few LTM features are loaded, return nothing.
+        if self.message_embeddings.shape[0] < self.num_memories_to_fetch:
             return []
 
         # Create the query embedding
