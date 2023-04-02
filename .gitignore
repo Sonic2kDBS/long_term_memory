@@ -1,15 +1,4 @@
-cache
-characters
-training/datasets
-extensions/silero_tts/outputs
-extensions/elevenlabs_tts/outputs
-extensions/sd_api_pictures/outputs
-extensions/long_term_memory/user_data
-logs
-loras
-models
-softprompts
-torch-dumps
+user_data
 *pycache*
 */*pycache*
 */*/pycache*
@@ -17,8 +6,3 @@ venv/
 .venv/
 .vscode
 repositories
-
-settings.json
-img_bot*
-img_me*
-prompts/[0-9]*
