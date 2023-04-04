@@ -39,6 +39,7 @@ pip install torch-1.12.0+cu113 # or whichever version of pytorch was uninstalled
 - Each memory sticks around for one message.
 - Memories themselves are past raw conversations filtered solely on length, and some may be irrelevant or filler text.
 - Limited scalability: Appending to the persistent LTM database is reasonably efficient, but we currently load all LTM embeddings in RAM, which consumes memory. Additionally, we perform a linear search across all embeddings during each chat round.
+- Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
 
 ## How the Chatbot Sees the LTM
 Chatbots are typically given a fixed, "context" text block that persists across the entire chat. The LTM extension augments this context block by dynamically injecting a relevant long-term memory.
