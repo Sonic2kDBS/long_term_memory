@@ -233,7 +233,7 @@ def custom_generate_chat_prompt(
     name2,
     context,
     chat_prompt_size,
-    impersonate=False,
+    **kwargs,
 ):
     """Main hook that allows us to fetch and store memories from/to LTM."""
     print("=" * 60)
@@ -252,6 +252,7 @@ def custom_generate_chat_prompt(
         augmented_context = _build_augmented_context(memory_context, context)
     debug_texts["current_context_block"] = augmented_context
 
+    kwargs["also_return_rows"] = True
     (prompt, prompt_rows) = generate_chat_prompt(
         user_input,
         max_new_tokens,
@@ -259,8 +260,7 @@ def custom_generate_chat_prompt(
         name2,
         augmented_context,
         chat_prompt_size,
-        impersonate,
-        also_return_rows=True,
+        **kwargs,
     )
 
     # === Clean and add new messages to LTM ===
