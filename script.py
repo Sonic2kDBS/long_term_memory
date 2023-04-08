@@ -226,6 +226,9 @@ def _build_memory_context(fetched_memories: List[Tuple[str, float]], name1: str,
     return memory_context
 
 
+# Thanks to @oobabooga for providing the fix for:
+# https://github.com/wawawario2/long_term_memory/issues/12
+# https://github.com/wawawario2/long_term_memory/issues/14
 def custom_generate_chat_prompt(
     user_input,
     max_new_tokens,
