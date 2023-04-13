@@ -226,16 +226,13 @@ def _build_memory_context(fetched_memories: List[Tuple[str, float]], name1: str,
     return memory_context
 
 
-# Thanks to @oobabooga for providing the fix for:
+# Thanks to @oobabooga for providing the fixes for:
 # https://github.com/wawawario2/long_term_memory/issues/12
 # https://github.com/wawawario2/long_term_memory/issues/14
+# https://github.com/wawawario2/long_term_memory/issues/19
 def custom_generate_chat_prompt(
     user_input,
-    max_new_tokens,
-    name1,
-    name2,
-    context,
-    chat_prompt_size,
+    state,
     **kwargs,
 ):
     """Main hook that allows us to fetch and store memories from/to LTM."""
@@ -247,22 +244,19 @@ def custom_generate_chat_prompt(
     fetched_memories = memory_database.query(
         user_input,
     )
-    memory_context = _build_memory_context(fetched_memories, name1, name2)
+    memory_context = _build_memory_context(fetched_memories, state["name1"], state["name2"])
 
     # === Call oobabooga's original generate_chat_prompt ===
-    augmented_context = context
+    augmented_context = state["context"]
     if memory_context is not None:
-        augmented_context = _build_augmented_context(memory_context, context)
+        augmented_context = _build_augmented_context(memory_context, state["context"])
     debug_texts["current_context_block"] = augmented_context
 
     kwargs["also_return_rows"] = True
+    state["context"] = augmented_context
     (prompt, prompt_rows) = generate_chat_prompt(
         user_input,
-        max_new_tokens,
-        name1,
-        name2,
-        augmented_context,
-        chat_prompt_size,
+        state,
         **kwargs,
     )
 
@@ -271,25 +265,25 @@ def custom_generate_chat_prompt(
     # Avoid storing any of the baked-in bot template responses
     if len(prompt_rows) >= _MIN_ROWS_TILL_RESPONSE:
         bot_message = prompt_rows[_LAST_BOT_MESSAGE_INDEX]
-        clean_bot_message = clean_character_message(name2, bot_message)
+        clean_bot_message = clean_character_message(state["name2"], bot_message)
 
         # Store bot message into LTM
         if len(clean_bot_message) >= _CONFIG["ltm_writes"]["min_message_length"]:
-            memory_database.add(name2, clean_bot_message)
+            memory_database.add(state["name2"], clean_bot_message)
             print("-----------------------")
             print("NEW MEMORY SAVED to LTM")
             print("-----------------------")
-            print("name:", name2)
+            print("name:", state["name2"])
             print("message:", clean_bot_message)
             print("-----------------------")
 
     # Store Anon's input directly into LTM
     if len(user_input) >= _CONFIG["ltm_writes"]["min_message_length"]:
-        memory_database.add(name1, user_input)
+        memory_database.add(state["name1"], user_input)
         print("-----------------------")
         print("NEW MEMORY SAVED to LTM")
         print("-----------------------")
-        print("name:", name1)
+        print("name:", state["name1"])
         print("message:", user_input)
         print("-----------------------")
 
