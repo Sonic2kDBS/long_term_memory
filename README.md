@@ -1,5 +1,6 @@
 # Text Generation Web UI with Long-Term Memory
-NOTICE: If you have been using this extension on or before 04/01/2023, you should follow the [migration instructions](#migration-instructions).
+NOTICE: If you have been using this extension on or before 05/06/2023, you should follow the [character namespace migration instructions](#migration-instructions).
+NOTICE: If you have been using this extension on or before 04/01/2023, you should follow the [extension migration instructions](#extension-migration-instructions).
 
 Welcome to the experimental repository for the long-term memory (LTM) extension for oobabooga's Text Generation Web UI. The goal of the LTM extension is to enable the chatbot to "remember" conversations long-term. Please note that this is an early-stage experimental project, and perfect results should not be expected. This project has been tested on Ubuntu LTS 22.04. Other people have tested it successfully on Windows. Compatibility with macOS is unknown.
 
@@ -31,11 +32,11 @@ pip install torch-1.12.0+cu113 # or whichever version of pytorch was uninstalled
 
 ## Features
 - Memories are fetched using a semantic search, which understands the "actual meaning" of the messages.
+- Separate memories for different characters, all handled under the hood for you. (legacy users see character namespacing migration instructions)
 - Ability to load an arbitrary number of "memories".
 - Other configuration options, see below.
 
 ## Limitations
-- There's one universal LTM database, so it's recommended to stick with just one character. If you don't, all characters will see the memories of others. This will be addressed soon.
 - Each memory sticks around for one message.
 - Memories themselves are past raw conversations filtered solely on length, and some may be irrelevant or filler text.
 - Limited scalability: Appending to the persistent LTM database is reasonably efficient, but we currently load all LTM embeddings in RAM, which consumes memory. Additionally, we perform a linear search across all embeddings during each chat round.
@@ -136,7 +137,20 @@ The roadmap will be driven based on user feedback. Potential updates include:
 - Use a Large Language Model (LLM) to summarize raw text into more useful memories directly. This may be challenging just as an oobabooga extension.
 - Scaling the backend.
 
-## Migration Instructions 
+## Character Namespace Migration Instructions 
+As of 05/06/2023, support was added for different characters having their own memories. If you want this feature, you must migrate your existing database to under a character's name
+1. Back up all your memories in a safe location. They are located in `extensions/long_term_memory/user_data/bot_memories/` Something like this:
+```bash
+cp -r extensions/long_term_memory/user_data/bot_memories/ ~/bot_memories_backup_for_migration/
+```
+2. Inside `extensions/long_term_memory/user_data/bot_memories/` create a new directory of your character's name in LOWERCASE and WITH SPACES REPLACED BY `_`s. For example, if your character name is "Miku Hatsune", run the following:
+```bash
+mkdir extensions/long_term_memory/user_data/bot_memories/miku_hatsune
+mv extensions/long_term_memory/user_data/bot_memories/long_term_memory.db extensions/long_term_memory/user_data/bot_memories/miku_hatsune
+mv extensions/long_term_memory/user_data/bot_memories/long_term_memory_embeddings.zarr extensions/long_term_memory/user_data/bot_memories/miku_hatsune
+```
+
+## Extension Migration Instructions 
 As of 04/01/2023, this repo has been converted from a fork of oobabooga's repo to a modular extension. You will now work directly out of ooba's repo and clone this extension as a submodule. This will allow you to get updates from ooba more directly. Please follow the following steps:
 1. Back up all your memories in a safe location. They are located in `extensions/long_term_memory/user_data/bot_memories/` Something like this:
 ```bash

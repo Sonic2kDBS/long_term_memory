@@ -2,7 +2,7 @@
 
 import pathlib
 import sqlite3
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -27,43 +27,85 @@ from extensions.long_term_memory.core.queries import (
 class LtmDatabase:
     """API over an LTM database."""
 
-    def __init__(self, directory: pathlib.Path, num_memories_to_fetch: int=1):
+    def __init__(
+        self,
+        directory: pathlib.Path,
+        num_memories_to_fetch: int=1,
+        force_use_legacy_db: bool=False,
+    ):
         """Loads all resources."""
-        self.database_path = directory / DATABASE_NAME
-        self.embeddings_path = directory / EMBEDDINGS_NAME
+        self.directory = directory
 
-        if not self.database_path.exists() and not self.embeddings_path.exists():
-            print("No existing memories found, will create a new database.")
-            self._destroy_and_recreate_database(do_sql_drop=False)
-        elif self.database_path.exists() and not self.embeddings_path.exists():
-            raise RuntimeError(
-                "ERROR: Inconsistent state detected: "
-                f"{self.database_path} exists but {self.embeddings_path} does not. "
-                "Her memories are likely safe, but you'll have to regen the "
-                "embedding vectors yourself manually."
-            )
-        elif not self.database_path.exists() and self.embeddings_path.exists():
-            raise RuntimeError(
-                "ERROR: Inconsistent state detected: "
-                f"{self.embeddings_path} exists but {self.database_path} does not. "
-                f"Please look for {DATABASE_NAME} in another directory, "
-                "if you can't find it, her memories may be lost."
-            )
+        self.database_path = None
+        self.embeddings_path = None
 
-        # Prepare the memory database for retrieve
+        self.character_name = None
+        self.message_embeddings = None
+        self.disk_embeddings = None
+        self.sql_conn = None
 
-        # Load the embeddings to a local numpy array
-        self.message_embeddings = zarr.open(self.embeddings_path, mode="r")[:]
-        # Prepare a "connection" to the embeddings, but to store new LTMs on disk
-        self.disk_embeddings = zarr.open(self.embeddings_path, mode="a")
-        # Prepare a "connection" to the master database
-        self.sql_conn = sqlite3.connect(self.database_path, check_same_thread=False)
+        # Load db
+        (legacy_database_path, legacy_embeddings_path) = self._build_database_paths()
+        legacy_db_exists = legacy_database_path.exists() and legacy_embeddings_path.exists()
+        use_legacy_db = force_use_legacy_db or legacy_db_exists
+        if use_legacy_db:
+            print("="*20)
+            print("WARNING: LEGACY DATABASE DETECTED, CHARACTER NAMESPACING IS DISABLED")
+            print("         See README for character namespace migration instructions if you want different memories for different characters")
+            print("="*20)
+            self.database_path = legacy_database_path
+            self.embeddings_path = legacy_embeddings_path
+            self._load_db()
 
         # Load analytic modules
         self.sentence_embedder = SentenceTransformer(
             SENTENCE_TRANSFORMER_MODEL, device="cpu"
         )
         self.num_memories_to_fetch = num_memories_to_fetch
+
+        # Set legacy status
+        self.use_legacy_db = use_legacy_db
+
+    def _build_database_paths(self, character_name: Optional[str]=None):
+        database_path = self.directory / DATABASE_NAME \
+                if character_name is None \
+                else self.directory / character_name /DATABASE_NAME
+        embeddings_path = self.directory / EMBEDDINGS_NAME \
+                if character_name is None \
+                else self.directory / character_name / EMBEDDINGS_NAME
+
+        return (database_path, embeddings_path)
+
+    def _load_db(
+        self,
+        database_namespace: str="LEGACY_UNIFIED_DATABASE",
+    ):
+        if not self.database_path.exists() and not self.embeddings_path.exists():
+            print(f"No existing memories found for {database_namespace}, "
+                  "will create a new database.")
+            self._destroy_and_recreate_database(do_sql_drop=False)
+        elif self.database_path.exists() and not self.embeddings_path.exists():
+            raise RuntimeError(
+                f"ERROR: Inconsistent state detected for {database_namespace}: "
+                f"{self.database_path} exists but {self.embeddings_path} does not. "
+                "Her memories are likely safe, but you'll have to regen the "
+                "embedding vectors yourself manually."
+            )
+        elif not self.database_path.exists() and self.embeddings_path.exists():
+            raise RuntimeError(
+                f"ERROR: Inconsistent state detected for {database_namespace}: "
+                f"{self.embeddings_path} exists but {self.database_path} does not. "
+                f"Please look for {DATABASE_NAME} in another directory, "
+                "if you can't find it, her memories may be lost."
+            )
+
+        ### Prepare the memory database for retrieve ###
+        # Load the embeddings to a local numpy array
+        self.message_embeddings = zarr.open(self.embeddings_path, mode="r")[:]
+        # Prepare a "connection" to the embeddings, but to store new LTMs on disk
+        self.disk_embeddings = zarr.open(self.embeddings_path, mode="a")
+        # Prepare a "connection" to the master database
+        self.sql_conn = sqlite3.connect(self.database_path, check_same_thread=False)
 
     def _destroy_and_recreate_database(self, do_sql_drop=False) -> None:
         """Destroys and re-creates a new LTM database.
@@ -72,6 +114,9 @@ class LtmDatabase:
                  DO NOT CALL THIS METHOD YOURSELF UNLESS YOU KNOW EXACTLY
                  WHAT YOU'RE DOING!
         """
+        # Create directories if they don't exist
+        self.database_path.parent.mkdir(parents=True, exist_ok=True)
+
         # Create new sqlite table to store the textual memories
         sql_conn = sqlite3.connect(self.database_path)
         with sql_conn:
@@ -89,6 +134,22 @@ class LtmDatabase:
             chunks=(CHUNK_SIZE, EMBEDDING_VECTOR_LENGTH),
             dtype="float32",
         )
+
+    def load_character_db_if_new(self, character_name: str) -> None:
+        """Loads the database associated with the specified character."""
+        if self.use_legacy_db:
+            # Using legacy database, do nothing
+            return
+        if self.character_name == character_name:
+            # No change in character, do nothing.
+            return
+
+        print(f"loading character {character_name}")
+
+        # Load db of new character.
+        (self.database_path, self.embeddings_path) = self._build_database_paths(character_name)
+        self._load_db(character_name)
+        self.character_name = character_name
 
     def add(self, name: str, new_message: str) -> None:
         """Adds a single new sentence to the LTM database."""
@@ -157,6 +218,9 @@ class LtmDatabase:
 
     def reload_embeddings_from_disk(self) -> None:
         """Reloads all embeddings from disk into memory."""
+        if self.message_embeddings is None:
+            return
+
         print("--------------------------------")
         print("Loading all embeddings from disk")
         print("--------------------------------")
@@ -170,6 +234,9 @@ class LtmDatabase:
 
     def destroy_all_memories(self) -> None:
         """Deletes all embeddings from memory AND disk."""
+        if self.message_embeddings is None or self.disk_embeddings is None:
+            return
+
         print("--------------------------------------------------")
         print("Destroying all memories, I hope you backed them up")
         print("--------------------------------------------------")

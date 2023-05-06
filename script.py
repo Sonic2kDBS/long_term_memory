@@ -76,10 +76,15 @@ def _get_num_memories_loaded() -> int:
 
 
 def _get_current_ltm_stats() -> str:
+    num_memories_in_ram = memory_database.message_embeddings.shape[0] \
+            if memory_database.message_embeddings is not None else "None"
+    num_memories_on_disk = memory_database.disk_embeddings.shape[0] \
+            if memory_database.disk_embeddings is not None else "None"
+
     ltm_stats = {
         "num_memories_seen_by_bot": _get_num_memories_loaded(),
-        "num_memories_in_ram": memory_database.message_embeddings.shape[0],
-        "num_memories_on_disk": memory_database.disk_embeddings.shape[0],
+        "num_memories_in_ram": num_memories_in_ram,
+        "num_memories_on_disk": num_memories_on_disk,
     }
     ltm_stats_str = _LTM_STATS_TEMPLATE.format(**ltm_stats)
     return ltm_stats_str
@@ -148,7 +153,7 @@ def ui():
             )
         with gr.Row():
             refresh_debug = gr.Button("Refresh")
-    with gr.Accordion("Long Term Memory DANGER ZONE", open=False):
+    with gr.Accordion("Long Term Memory DANGER ZONE (don't do this immediately after switching chars, write a msg first)", open=False):
         with gr.Row():
             destroy = gr.Button("Destroy all memories", variant="stop")
             destroy_confirm = gr.Button(
@@ -237,6 +242,9 @@ def custom_generate_chat_prompt(
 ):
     """Main hook that allows us to fetch and store memories from/to LTM."""
     print("=" * 60)
+
+    character_name = state["name2"].strip().lower().replace(" ", "_")
+    memory_database.load_character_db_if_new(character_name)
 
     user_input = fix_newlines(user_input)
 
