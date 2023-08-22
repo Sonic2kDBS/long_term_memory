@@ -2,6 +2,8 @@
 
 NOTICE: [This extension is no longer in active development.](#exporting-your-memories)
 
+
+
 NOTICE TO WINDOWS USERS: If you have a space in your username, you may have [problems with this extension](https://github.com/wawawario2/long_term_memory/issues/39). 
 
 NOTICE: This extension may conflict with [other extensions that modify the context](https://github.com/wawawario2/long_term_memory/issues/44)
