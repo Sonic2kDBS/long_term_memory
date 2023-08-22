@@ -1,5 +1,8 @@
 # Text Generation Web UI with Long-Term Memory
-NOTE TO WINDOWS USER: If you have a space in your username, you may have [problems with this extension](https://github.com/wawawario2/long_term_memory/issues/39). 
+
+NOTICE: [This extension is no longer in active development.](#exporting-your-memories)
+
+NOTICE TO WINDOWS USERS: If you have a space in your username, you may have [problems with this extension](https://github.com/wawawario2/long_term_memory/issues/39). 
 
 NOTICE: This extension may conflict with [other extensions that modify the context](https://github.com/wawawario2/long_term_memory/issues/44)
 
@@ -192,3 +195,21 @@ cp -r ~/bot_memories_backup_for_migration/* extensions/long_term_memory/user_dat
 6. If you have a custom configuration file, copy it to `extensions/long_term_memory`. Note the location has changed from before.
 
 7. Run a bot and make sure you can see all memories.
+
+## Exporting your memories
+As of 08/21/2023 this extension is no longer in active development. Obviously you are free to continue using this extension but I'd recommend exporting your memories and moving on to another long term memory system.
+
+To export your memories:
+```bash
+cd extensions/long_term_memory
+```
+
+IMPORTANT: Back up the `user_data` directory before proceeding. Only then run:
+```bash
+./export_scripts/dump_memories_to_csv.sh # Please run the script from the long_term_memory directory
+```
+Your memories will be in `./user_data/bot_csv_outputs/`
+
+Windows (UNTESTED!): run `export_scripts/dump_memories_to_csv.bat`
+
+Some potential alternatives: (not merged) [langchain](https://github.com/oobabooga/text-generation-webui/issues/665)
