@@ -1,6 +1,8 @@
 # Text Generation Web UI with Long-Term Memory
 NOTE TO WINDOWS USER: If you have a space in your username, you may have [problems with this extension](https://github.com/wawawario2/long_term_memory/issues/39). 
 
+NOTICE: This extension may conflict with [other extensions that modify the context](https://github.com/wawawario2/long_term_memory/issues/44)
+
 NOTICE: If you have been using this extension on or before 05/06/2023, you should follow the [character namespace migration instructions](#character-namespace-migration-instructions).
 
 NOTICE: If you have been using this extension on or before 04/01/2023, you should follow the [extension migration instructions](#extension-migration-instructions).
@@ -27,11 +29,15 @@ python server.py --chat --extensions long_term_memory
 
 6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your bot's memories, simply delete the files inside that directory.
 
-## Tips for Windows Users (credit to Anons from /g/'s /lmg/)
+## Tips for Windows Users (credit to Anons from /g/'s /lmg/ and various people on github)
+This extension can be finnicky on Windows machines. Some general tips:
 - The LTM's extensions's dependencies may override the version of pytorch needed to run your LLMs. If this is the case, try reinstalling the original version of pytorch manually:
 ```bash
 pip install torch-1.12.0+cu113 # or whichever version of pytorch was uninstalled
 ```
+Other relevant discussions
+- [Missing dependencies](https://github.com/wawawario2/long_term_memory/discussions/23)
+- [Spaces in Windows usernames](https://github.com/wawawario2/long_term_memory/issues/39)
 
 ## Features
 - Memories are fetched using a semantic search, which understands the "actual meaning" of the messages.
@@ -84,6 +90,7 @@ You can configure the behavior of the LTM extension by modifying the `ltm_config
 ```
 ### `ltm_context.injection_location`
 One of two values, `BEFORE_NORMAL_CONTEXT` or `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`. They behave as written on the tin.
+If you use `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`, within the `context` field of your character config, you must add a `<START>` token AFTER the character description and BEFORE the example conversation. See [the following example](https://github.com/wawawario2/long_term_memory/blob/master/example_character_configs/Example_with_START_token.yaml).
 
 ### `ltm_context.memory_context_template`
 This defines the sub-context that's injected into the original context. Note the embedded params surrounded by `{}`, the system will automatically fill these in for you based on the memory it fetches, you don't actually fill the values in yourself here. You also don't have to place all of these params, just place what you need:
