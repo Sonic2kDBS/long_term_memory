@@ -214,4 +214,6 @@ Your memories will be in `./user_data/bot_csv_outputs/`
 
 Windows (UNTESTED!): run `export_scripts/dump_memories_to_csv.bat`
 
-Some potential alternatives: (not merged) [langchain](https://github.com/oobabooga/text-generation-webui/issues/665)
+Some potential alternatives: 
+- (not merged) [langchain support in oobabooga](https://github.com/oobabooga/text-generation-webui/issues/665)
+- (merged) [SuperBIG](https://github.com/oobabooga/text-generation-webui/pull/1548)
