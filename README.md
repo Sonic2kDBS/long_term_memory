@@ -155,6 +155,8 @@ Description: This is a sentence-transformers model. It maps sentences & paragrap
 History: We developped this model during the Community week using JAX/Flax for NLP & CV, organized by Hugging Face. We developped this model as part of the project: Train the Best Sentence Embedding Model Ever with 1B Training Pairs. We benefited from efficient hardware infrastructure to run the project: 7 TPUs v3-8, as well as intervention from Googles Flax, JAX, and Cloud team member about efficient deep learning frameworks.
 Our model is intented to be used as a sentence and short paragraph encoder. Given an input text, it ouptuts a vector which captures the semantic information. The sentence vector may be used for information retrieval, clustering or sentence similarity tasks.
 
+And oh boy, does it a good Job.
+
 ## How You Can Help
 - ~~We need assistance with prompt engineering experimentation. How should we formulate the LTM injection?~~
 - ~~Test the system and try to break it, report any bugs you find.~~
