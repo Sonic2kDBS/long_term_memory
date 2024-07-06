@@ -70,7 +70,12 @@ Models are typically given a fixed, "context" text block that persists across th
 
 ### Example of a typical context block:
 ```markdown
+Character: Miku 
 The following is a conversation between Anon and Miku. Miku likes Anon but is very shy.
+
+>Example conversation<
+
+[User input]
 ```
 
 ### Example of an augmented context block (S2k version):
@@ -81,6 +86,7 @@ The following is a conversation between Anon and Miku. Miku likes Anon but is ve
 I remember = (3 days ago, Miku said: "So Anon, your favorite color is blue? That's really cool!" + 3 days ago, Anon said: "Yes, and I like all kinds of blue things, like the Ocean or blue cars and even blue flowers :)" + These are personal memories from my memory extension)
 <START>        
 >Example conversation<
+
 [User input]
 ```
 
