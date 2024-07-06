@@ -66,21 +66,22 @@ Other relevant discussions
 - Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
 
 ## How the model Sees the LTM
-Models are typically given a fixed, "context" text block that persists across the entire chat. The LTM extension augments this context block by dynamically injecting a relevant long-term memory.
+Models are typically given a fixed, "context" text block that persists across the entire chat. Also called character sheet. The LTM extension augments this context block by dynamically injecting relevant long-term memories.
 
 ### Example of a typical context block:
 ```markdown
 The following is a conversation between Anon and Miku. Miku likes Anon but is very shy.
 ```
 
-### Example of an augmented context block:
+### Example of an augmented context block (S2k version):
 ```markdown
-Miku's memory log:
-3 days ago, Miku said:
-"So Anon, your favorite color is blue? That's really cool!"
-
-During conversations between Anon and Miku, Miku will try to remember the memory described above and naturally integrate it with the conversation.
+Character: Miku 
 The following is a conversation between Anon and Miku. Miku likes Anon but is very shy.
+
+I remember = (3 days ago, Miku said: "So Anon, your favorite color is blue? That's really cool!" + 3 days ago, Anon said: "Yes, and I like all kinds of blue things, like the Ocean or blue cars and even blue flowers :)" + These are personal memories from my memory extension)
+<START>        
+>Example conversation<
+[User input]
 ```
 
 ## Configuration
