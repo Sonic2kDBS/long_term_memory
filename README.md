@@ -39,7 +39,7 @@ python -m pytest -v extensions/long_term_memory/
 ```
 5. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
-6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your bot's memories, simply delete the files inside that directory.
+6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
 7. To make a backup use 7zip for example and zip the memories folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
 
