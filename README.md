@@ -141,22 +141,7 @@ A hard cutoff for each memory's length. This prevents very long memories from fl
 - Test the system and try to break it, report any bugs you find.
 
 ## Roadmap
-~~The roadmap will be driven based on user feedback. Potential updates include:~~
-I try to keep this extension running as long as possible.
-
-### New Features
-- N-gram analysis for "higher quality memories".
-- Scaling up memory bank size (with a limit of, perhaps, 4).
-
-### Quality of Life Improvements
-- Limit the size of each memory so it doesn't overwhelm the context.
-- Other simple hacks to improve the end user-experience.
-
-### Longer-Term (depending on interest/level of use)
-- Integrate the system with [llama.cpp](https://github.com/ggerganov/llama.cpp).
-- Merge the extension with oobabooga's original repo (depending on performance, level of interest, etc)
-- Use a Large Language Model (LLM) to summarize raw text into more useful memories directly. This may be challenging just as an oobabooga extension.
-- Scaling the backend.
+- I try to keep this extension running as long as possible.
 
 ## Character Namespace Migration Instructions 
 As of 05/06/2023, support was added for different characters having their own memories. If you want this feature, you must migrate your existing database to under a character's name
