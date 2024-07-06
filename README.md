@@ -18,26 +18,26 @@ NOTICE: If you have been using this extension on or before 04/01/2023, you shoul
 
 Welcome to the experimental repository for the long-term memory (LTM) extension for oobabooga's Text Generation Web UI. The goal of the LTM extension is to enable the chatbot to "remember" conversations long-term. Please note that this is an early-stage experimental project, and perfect results should not be expected. This project has been tested on Ubuntu LTS 22.04. Other people have tested it successfully on Windows. Compatibility with macOS is unknown.
 
-## How to Run
-1. Clone [oobabooga's  original repository](https://github.com/oobabooga/text-generation-webui) and follow the instructions until you can chat with a chatbot.
+## How to Run (updated 2024)
+1. Clone [oobabooga's  original repository](https://github.com/oobabooga/text-generation-webui) and follow the instructions until you can chat with a model.
 
-2. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory
+2. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory.
 ```bash
 git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
-3. Within the `textgen` conda environment (from the linked instructions), run the following commands to install dependencies and run tests:
+3. Within the `textgen` conda environment (from the linked instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh), run the following commands to install dependencies and run tests:
 ```bash
 pip install -r extensions/long_term_memory/requirements.txt
 python -m pytest -v extensions/long_term_memory/
 ```
-4. Run the server with the LTM extension. Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
+4. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
 ```bash
 # Only used by the one-click installer.
 # Example:
 # --listen --api
 --extensions long_term_memory
 ```
-5. Chat normally with the chatbot and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the chatbot during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the chatbot may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
+5. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
 6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your bot's memories, simply delete the files inside that directory.
 
@@ -63,8 +63,8 @@ Other relevant discussions
 - Limited scalability: Appending to the persistent LTM database is reasonably efficient, but we currently load all LTM embeddings in RAM, which consumes memory. Additionally, we perform a linear search across all embeddings during each chat round.
 - Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
 
-## How the Chatbot Sees the LTM
-Chatbots are typically given a fixed, "context" text block that persists across the entire chat. The LTM extension augments this context block by dynamically injecting a relevant long-term memory.
+## How the model Sees the LTM
+Models are typically given a fixed, "context" text block that persists across the entire chat. The LTM extension augments this context block by dynamically injecting a relevant long-term memory.
 
 ### Example of a typical context block:
 ```markdown
