@@ -1,6 +1,6 @@
 # Long-Term Memory extension for the Oobabooga Text-Generation-Web-UI (S2k version)
 
-This is a Fork of the LTM extension from [@wawawario2](https://github.com/wawawario2). I used it a while now, actually more than a year and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
+This is a Fork of the LTM extension from [@wawawario2](https://github.com/wawawario2) by [Sonic2k](https://github.com/Sonic2kDBS). I used it a while now, actually more than a year and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
 Instead of telling the model to mention the memories, they are now just part of the context. The model just gets the information, that those appearing lines from the database are memories from previous conversations. This way the model can decide if it uses the memories or go a different way. It gets a glimpse of what was sayd before and this makes the conversation much more natural. Over the time of some conversation lines more memories appear bit by bit and the model remembers them partly. So surpising things happen within the conversation.
 
 This version is for conversation memory. If you plan to do document analysis or if you want to insert predefined textdata to use, use other RAG systems instead.
