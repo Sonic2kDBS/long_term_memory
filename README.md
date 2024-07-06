@@ -41,7 +41,7 @@ python -m pytest -v extensions/long_term_memory/
 
 6. Memories will be saved in `extensions/long_term_memory/user_data/bot_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your bot's memories, simply delete the files inside that directory.
 
-7. To make a backup use 7zip for example and zip the memories Folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the name. It will help you to find he latest or any previous backup if necessary.
+7. To make a backup use 7zip for example and zip the memories folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
 
 ## Tips for Windows Users (credit to Anons from /g/'s /lmg/ and various people on github)
 This extension can be finnicky on Windows machines. Some general tips:
