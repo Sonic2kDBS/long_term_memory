@@ -66,7 +66,7 @@ Other relevant discussions
 - Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
 
 ## How the model Sees the LTM
-Models are typically given a fixed, "context" text block that persists across the entire chat. Also called character sheet. The LTM extension augments this context block by dynamically injecting relevant long-term memories.
+Models are typically given a fixed, "context" text block that persists across the entire chat. Also called character sheet. The LTM extension arugments this context block by dynamically injecting relevant long-term memories.
 
 ### Example of a typical context block:
 ```markdown
