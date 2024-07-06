@@ -19,7 +19,7 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 
 2. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory
 ```bash
-git clone https://github.com/wawawario2/long_term_memory extensions/long_term_memory
+git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
 3. Within the `textgen` conda environment (from the linked instructions), run the following commands to install dependencies and run tests:
 ```bash
