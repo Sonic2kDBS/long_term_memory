@@ -141,7 +141,8 @@ A hard cutoff for each memory's length. This prevents very long memories from fl
 - Test the system and try to break it, report any bugs you find.
 
 ## Roadmap
-The roadmap will be driven based on user feedback. Potential updates include:
+~~The roadmap will be driven based on user feedback. Potential updates include:~~
+I try to keep this extension running as long as possible.
 
 ### New Features
 - N-gram analysis for "higher quality memories".
