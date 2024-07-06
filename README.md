@@ -156,8 +156,8 @@ History: We developped this model during the Community week using JAX/Flax for N
 Our model is intented to be used as a sentence and short paragraph encoder. Given an input text, it ouptuts a vector which captures the semantic information. The sentence vector may be used for information retrieval, clustering or sentence similarity tasks.
 
 ## How You Can Help
-- We need assistance with prompt engineering experimentation. How should we formulate the LTM injection?
-- Test the system and try to break it, report any bugs you find.
+- ~~We need assistance with prompt engineering experimentation. How should we formulate the LTM injection?~~
+- ~~Test the system and try to break it, report any bugs you find.~~
 
 ## Roadmap
 - I try to keep this extension running as long as possible.
