@@ -158,6 +158,7 @@ Our model is intented to be used as a sentence and short paragraph encoder. Give
 ## How You Can Help
 - ~~We need assistance with prompt engineering experimentation. How should we formulate the LTM injection?~~
 - ~~Test the system and try to break it, report any bugs you find.~~
+- Use this extension and tell about your experience.
 
 ## Roadmap
 - I try to keep this extension running as long as possible.
