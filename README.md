@@ -28,9 +28,12 @@ git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_ter
 pip install -r extensions/long_term_memory/requirements.txt
 python -m pytest -v extensions/long_term_memory/
 ```
-4. Run the server with the LTM extension. If all goes well, you should see it reporting "ok"
+4. Run the server with the LTM extension. Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
 ```bash
-python server.py --chat --extensions long_term_memory
+# Only used by the one-click installer.
+# Example:
+# --listen --api
+--extensions long_term_memory
 ```
 5. Chat normally with the chatbot and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the chatbot during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the chatbot may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
