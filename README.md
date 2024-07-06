@@ -149,7 +149,9 @@ A hard cutoff for each memory's length. This prevents very long memories from fl
 
 ### The amazing history of the LTM SBERT model
 Name: all-mpnet-base-v2
+
 Description: This is a sentence-transformers model. It maps sentences & paragraphs to a 768 dimensional dense vector space and can be used for tasks like clustering or semantic search.
+
 History: We developped this model during the Community week using JAX/Flax for NLP & CV, organized by Hugging Face. We developped this model as part of the project: Train the Best Sentence Embedding Model Ever with 1B Training Pairs. We benefited from efficient hardware infrastructure to run the project: 7 TPUs v3-8, as well as intervention from Googles Flax, JAX, and Cloud team member about efficient deep learning frameworks.
 Our model is intented to be used as a sentence and short paragraph encoder. Given an input text, it ouptuts a vector which captures the semantic information. The sentence vector may be used for information retrieval, clustering or sentence similarity tasks.
 
