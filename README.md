@@ -3,8 +3,7 @@
 This is a Fork of the LTM extension from @wawawario2. I used it a while now, actually more than a year and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
 Instead of telling the model to mention the memories, they are now just part of the context. The model just gets the information, that those appearing lines from the database are memories from previous conversations. This way the model can decide if it uses the memories or go a different way. It gets a glimpse of what was sayd before and this makes the conversation much more natural. Over the time of some conversation lines more memories appear bit by bit and the model remembers them partly. So surpising things happen within the conversation.
 
-Some notes from the readme.md from the forked repository:
-
+## Some notes from the readme.md from the forked repository:
 NOTICE: [This extension is no longer in active development.](#exporting-your-memories)
 
 NOTICE TO WINDOWS USERS: If you have a space in your username, you may have [problems with this extension](https://github.com/wawawario2/long_term_memory/issues/39). 
