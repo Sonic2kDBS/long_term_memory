@@ -24,7 +24,7 @@ def test_clean_character_message():
     # Empty input
     assert "" == clean_character_message("Miku", "")
 
-    # Message with only bot name and no text
+    # Message with only model name and no text
     assert "" == clean_character_message("Miku", "Miku: ")
 
     # Leading and trailing whitespaces
@@ -33,7 +33,7 @@ def test_clean_character_message():
         "Satania", "\n   Satania: iToddlers    Satania: BTFO HAHAHAHA  \n "
     )
 
-    # Bot message with special characters
+    # Model message with special characters
     expected_result = "/think *he likes me!* (◕ω◕) yay!!11"
     assert expected_result == clean_character_message(
         "Miku", "Miku: /think *he likes me!* (◕ω◕) Miku: yay!!11"

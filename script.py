@@ -21,8 +21,8 @@ from extensions.long_term_memory.utils.timestamp_parsing import (
 # === Internal constants (don't change these without good reason) ===
 _CONFIG_PATH = "extensions/long_term_memory/ltm_config.json"
 _MIN_ROWS_TILL_RESPONSE = 5
-_LAST_BOT_MESSAGE_INDEX = -3
-_LTM_STATS_TEMPLATE = """{num_memories_seen_by_bot} memories are loaded in the bot
+_LAST_MODEL_MESSAGE_INDEX = -3
+_LTM_STATS_TEMPLATE = """{num_memories_seen_by_model} memories are loaded for the model
 {num_memories_in_ram} memories are loaded in RAM
 {num_memories_on_disk} memories are saved to disk"""
 with open(_CONFIG_PATH, "rt") as handle:
@@ -36,7 +36,7 @@ debug_texts = {
     "current_context_block": "(None)",
 }
 memory_database = LtmDatabase(
-    pathlib.Path("./extensions/long_term_memory/user_data/bot_memories/"),
+    pathlib.Path("./extensions/long_term_memory/user_data/model_memories/"),
     num_memories_to_fetch=_CONFIG["ltm_reads"]["num_memories_to_fetch"],
 )
 # This bias string is currently unused, feel free to try using it
@@ -53,9 +53,9 @@ print("IMPORTANT LONG TERM MEMORY NOTES TO USER:")
 print("-----------------------------------------")
 print(
     "Please remember that LTM-stored memories will only be visible to "
-    "the bot during your NEXT session. This prevents the loaded memory "
+    "the model during your NEXT session. This prevents the loaded memory "
     "from being flooded with messages from the current conversation which "
-    "would defeat the original purpose of this module. This can be overridden "
+    "would defeat the original purpose of this extension. This can be overridden "
     "by pressing 'Force reload memories'"
 )
 print("----------")
@@ -82,7 +82,7 @@ def _get_current_ltm_stats() -> str:
             if memory_database.disk_embeddings is not None else "None"
 
     ltm_stats = {
-        "num_memories_seen_by_bot": _get_num_memories_loaded(),
+        "num_memories_seen_by_model": _get_num_memories_loaded(),
         "num_memories_in_ram": num_memories_in_ram,
         "num_memories_on_disk": num_memories_on_disk,
     }
@@ -117,7 +117,7 @@ def _build_augmented_context(memory_context: str, original_context: str) -> str:
 
 
 # === Hooks to oobaboogs UI ===
-def bot_prefix_modifier(string):
+def model_prefix_modifier(string):
     """
     This function is only applied in chat mode. It modifies
     the prefix text for the Bot and can be used to bias its
@@ -140,7 +140,7 @@ def ui():
         with gr.Row():
             current_memory = gr.Textbox(
                 value=_get_current_memory_text(),
-                label="Current memory loaded by bot",
+                label="Current memory loaded to model",
             )
             current_ltm_stats = gr.Textbox(
                 value=_get_current_ltm_stats(),
@@ -222,7 +222,7 @@ def _build_memory_context(fetched_memories: List[Tuple[str, float]], name1: str,
 
     # Report debugging info to user
     print("------------------------------")
-    print("NEW MEMORIES LOADED IN CHATBOT")
+    print("NEW MEMORIES LOADED TO MODEL")
     pprint.pprint(joined_memory_strs)
     debug_texts["current_memory_text"] = joined_memory_strs
     debug_texts["num_memories_loaded"] = len(memory_strs)
@@ -269,20 +269,20 @@ def custom_generate_chat_prompt(
     )
 
     # === Clean and add new messages to LTM ===
-    # Store the bot's last message.
-    # Avoid storing any of the baked-in bot template responses
+    # Store the model's last message.
+    # Avoid storing any of the baked-in model template responses
     if len(prompt_rows) >= _MIN_ROWS_TILL_RESPONSE:
-        bot_message = prompt_rows[_LAST_BOT_MESSAGE_INDEX]
-        clean_bot_message = clean_character_message(state["name2"], bot_message)
+        model_message = prompt_rows[_LAST_MODEL_MESSAGE_INDEX]
+        clean_model_message = clean_character_message(state["name2"], model_message)
 
-        # Store bot message into LTM
-        if len(clean_bot_message) >= _CONFIG["ltm_writes"]["min_message_length"]:
-            memory_database.add(state["name2"], clean_bot_message)
+        # Store model message into LTM
+        if len(clean_model_message) >= _CONFIG["ltm_writes"]["min_message_length"]:
+            memory_database.add(state["name2"], clean_model_message)
             print("-----------------------")
             print("NEW MEMORY SAVED to LTM")
             print("-----------------------")
             print("name:", state["name2"])
-            print("message:", clean_bot_message)
+            print("message:", clean_model_message)
             print("-----------------------")
 
     # Store Anon's input directly into LTM
