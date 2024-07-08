@@ -25,7 +25,7 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 ```bash
 git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
-3. Within the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh), run the following commands to install dependencies and run tests:
+3. Within the `env` conda environment (from the linked text-generation-webui instructions / or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh / also see 4.), run the following commands to install dependencies and run tests:
 ```bash
 pip install -r extensions/long_term_memory/requirements.txt
 ```
