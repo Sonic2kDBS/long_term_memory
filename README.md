@@ -32,7 +32,7 @@ pip install -r extensions/long_term_memory/requirements.txt
 ```bash
 python -m pytest -v extensions/long_term_memory/
 ```
-4. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
+4. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the `env` environment.
 ```bash
 conda env list
 ```
