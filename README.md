@@ -26,7 +26,7 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
 
-3. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh). If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the `env` environment.
+3. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: `cmd_windows.bat` and for Linux use: `cmd_linux.sh`). If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example, that the command `conda` could not be found, you are probably not in the `env` environment. Make sure it is active before continuing.
 ```bash
 conda env list
 ```
