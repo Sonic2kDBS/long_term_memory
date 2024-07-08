@@ -25,13 +25,19 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 ```bash
 git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
-3. Within the `textgen` conda environment (from the linked text-generation-webui instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh), run the following commands to install dependencies and run tests:
+3. Within the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh), run the following commands to install dependencies and run tests:
 ```bash
 pip install -r extensions/long_term_memory/requirements.txt
 ```
 ```bash
 python -m pytest -v extensions/long_term_memory/
 ```
+If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with:
+```bash
+conda env list
+```
+This will list all conda environments and markse the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
+
 4. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
 ```bash
 # Only used by the one-click installer.
