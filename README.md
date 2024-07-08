@@ -65,7 +65,7 @@ Other relevant discussions
 
 ## Limitations
 - Each memory sticks around for one message. But in a conversation, the model can not only remember some previous messages but also some previous shown LTM memories.
-- Memories themselves are past raw conversations filtered solely on length, and some may be irrelevant or filler text.
+- Memories themselves are past raw conversations filtered solely on length, and some may be irrelevant or filler text. But it seems, most models can handel this. This never had affected any of my conversations until now.
 - Limited scalability: Appending to the persistent LTM database is reasonably efficient, but we currently load all LTM embeddings in RAM, which consumes memory. Additionally, we perform a linear search across all embeddings during each chat round.
 - Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
 
