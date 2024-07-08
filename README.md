@@ -65,17 +65,17 @@ Memories will be saved in `extensions/long_term_memory/user_data/model_memories/
 ```bash
 user_data
 ├── bot_memories (old)
-│   ├── Miku
+│   ├── miku
 │   │   ├── long_term_memory.db
 │   │   ├── long_term_memory_embeddings.zarr
 │   │       └── 0.0
 │   └── memories-will-be-saved-here.txt
 └── model_memories (new)
-    ├── Miku
+    ├── miku
     │   ├── long_term_memory.db
     │   ├── long_term_memory_embeddings.zarr
     │       └── 0.0
-    ├── Anon
+    ├── anon
     │   ├── long_term_memory.db
     │   ├── long_term_memory_embeddings.zarr
     │       └── 0.0
