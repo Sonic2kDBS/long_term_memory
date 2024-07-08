@@ -130,7 +130,9 @@ I remember = (3 days ago, Miku said: "So Anon, your favorite color is blue? That
 ```
 
 ## Configuration
-You can configure the behavior of the LTM extension by modifying the `ltm_config.json` file. The following is a typical example:
+You can configure the behavior of the LTM extension by modifying the `ltm_config.json` file.
+
+The following is an example of the old config file which uses `BEFORE_NORMAL_CONTEXT`. It forces the model to integrate seen memories:
 ```javascript
 {
     "ltm_context": {
@@ -145,6 +147,24 @@ You can configure the behavior of the LTM extension by modifying the `ltm_config
         "max_cosine_distance": 0.60,
         "num_memories_to_fetch": 2,
         "memory_length_cutoff_in_chars": 1000
+    }
+}
+```
+The following is the new config file which uses `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`. It tells the model the memories but keeps it open if they become used in the context:
+```javascript
+{
+    "ltm_context": {
+        "injection_location": "AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES",
+        "memory_context_template": "I remember = ({all_memories}These are personal memories from my memory extension)",
+        "memory_template": "{time_difference}, {memory_name} said: \"{memory_message}\" + "
+    },
+    "ltm_writes": {
+        "min_message_length": 36
+    },
+    "ltm_reads": {
+        "max_cosine_distance": 0.60,
+        "num_memories_to_fetch": 2,
+        "memory_length_cutoff_in_chars": 288
     }
 }
 ```
@@ -204,7 +224,7 @@ And oh boy, does it a good Job.
 ## Roadmap
 - I try to keep this extension running as long as possible.
 
-## Character Namespace Migration Instructions 
+## Character Namespace Migration Instructions (kept for reference)
 As of 05/06/2023, support was added for different characters having their own memories. If you want this feature, you must migrate your existing database to under a character's name
 1. Back up all your memories in a safe location. They are located in `extensions/long_term_memory/user_data/bot_memories/` Something like this:
 ```bash
@@ -217,7 +237,7 @@ mv extensions/long_term_memory/user_data/bot_memories/long_term_memory.db extens
 mv extensions/long_term_memory/user_data/bot_memories/long_term_memory_embeddings.zarr extensions/long_term_memory/user_data/bot_memories/miku_hatsune
 ```
 
-## Extension Migration Instructions 
+## Extension Migration Instructions (kept for reference)
 As of 04/01/2023, this repo has been converted from a fork of oobabooga's repo to a modular extension. You will now work directly out of ooba's repo and clone this extension as a submodule. This will allow you to get updates from ooba more directly. Please follow the following steps:
 1. Back up all your memories in a safe location. They are located in `extensions/long_term_memory/user_data/bot_memories/` Something like this:
 ```bash
