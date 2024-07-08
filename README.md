@@ -47,6 +47,27 @@ python -m pytest -v extensions/long_term_memory/
 
 8. To make a backup use 7zip for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
 
+## Migration of old memories from the forked repository to the S2k version.
+The S2k version will not touch existing memories from the old repository.
+
+But you can migrate existing memories to the S2k version.
+
+If you don't have or migrate old memories, a new database will be created.
+
+Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. This is different from the forked repository. If you want to use existing memories just move or copy them from `bot_memories` to `model_memories`. This is also a good moment to do a backup.
+```bash
+├── bot_memories (old)
+│   ├── long_term_memory.db
+│   ├── long_term_memory_embeddings.zarr
+│   │   └── 0.0
+│   └── memories-will-be-saved-here.txt
+├── model_memories (new)
+    ├── long_term_memory.db
+    ├── long_term_memory_embeddings.zarr
+    │   └── 0.0
+    └── memories-will-be-saved-here.txt
+```
+
 ## Tips for Windows Users (credit to Anons from /g/'s /lmg/ and various people on github)
 This extension can be finnicky on Windows machines. Some general tips:
 - The LTM's extensions's dependencies may override the version of pytorch needed to run your LLMs. If this is the case, try reinstalling the original version of pytorch manually:
