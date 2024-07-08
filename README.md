@@ -32,11 +32,10 @@ pip install -r extensions/long_term_memory/requirements.txt
 ```bash
 python -m pytest -v extensions/long_term_memory/
 ```
-4. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with:
+4. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
 ```bash
 conda env list
 ```
-This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
 
 5. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
 ```bash
