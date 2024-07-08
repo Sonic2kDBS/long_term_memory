@@ -175,7 +175,7 @@ If you use `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`, within the `context` fiel
 ### `ltm_context.memory_context_template`
 This defines the sub-context that's injected into the original context. Note the embedded params surrounded by `{}`, the system will automatically fill these in for you based on the memory it fetches, you don't actually fill the values in yourself here. You also don't have to place all of these params, just place what you need:
 - `{name1}` is the current user's name
-- `{name2}` is the current bot's name
+- `{name2}` is the current models's name
 - `{all_memories}` is the concatenated list of ALL relevant memories fetched by LTM 
 
 ### `ltm_context.memory_template`
@@ -185,16 +185,16 @@ This defines an individual memory's format. Similar rules apply.
 - `{time_difference}` is how long ago the memory was made (example: "4 days ago")
 
 ### `ltm_writes.min_message_length`
-How long a message must be for it to be considered for LTM storage. Lower this value to allow "shorter" memories to get recorded by LTM.
+How long a message must be for it to be considered for LTM storage. Lower this value to allow "shorter" memories to get recorded by LTM. 36 seems to be best.
 
 ### `ltm_reads.max_cosine_distance`
-Controls how "similar" your last message has to be to the "best" LTM message to be loaded into the context. It represents the cosine distance, where "lower" means "more similar". Lower this value to reduce how often memories get loaded into the bot.
+Controls how "similar" your last message has to be to the "best" LTM message to be loaded into the context. It represents the cosine distance, where "lower" means "more similar". Lower this value to reduce how often memories get loaded to the model. 0.6 seems to be best.
 
 ### `ltm_reads.num_memories_to_fetch`
-The (maximum) number of memories to fetch from LTM. Raise this number to fetch more (relevant) memories, however, this will consume more of your fixed context budget.
+The (maximum) number of memories to fetch from LTM. Raise this number to fetch more (relevant) memories, however, this will consume more of your fixed context budget. I recommend 2.
 
 ### `ltm_reads.memory_length_cutoff_in_chars`
-A hard cutoff for each memory's length. This prevents very long memories from flooding and consuming the full context.
+A hard cutoff for each memory's length. This prevents very long memories from flooding and consuming the full context window length. 288 seems to be best. (Note, that this is the cutoff length for loading one memory. Still the full length of all memories will be saved in the DB.)
 
 ## How It Works Behind the Scenes
 ### Database
