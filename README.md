@@ -56,13 +56,14 @@ If you don't have or want to migrate old memories, a new database will be create
 
 Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. This is different from the forked repository. If you want to use existing memories just move or copy them from `bot_memories` to `model_memories`. This is also a good moment to do a backup.
 ```bash
+user_data
 ├── bot_memories (old)
 │   ├── Miku
 │   │   ├── long_term_memory.db
 │   │   ├── long_term_memory_embeddings.zarr
 │   │       └── 0.0
 │   └── memories-will-be-saved-here.txt
-├── model_memories (new)
+└── model_memories (new)
     ├── Miku
     │   ├── long_term_memory.db
     │   ├── long_term_memory_embeddings.zarr
