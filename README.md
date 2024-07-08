@@ -28,6 +28,8 @@ git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_ter
 3. Within the `textgen` conda environment (from the linked text-generation-webui instructions)(or for Windows use: cmd_windows.bat and for Linux use: cmd_linux.sh), run the following commands to install dependencies and run tests:
 ```bash
 pip install -r extensions/long_term_memory/requirements.txt
+```
+```bash
 python -m pytest -v extensions/long_term_memory/
 ```
 4. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
