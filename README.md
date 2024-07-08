@@ -32,26 +32,26 @@ pip install -r extensions/long_term_memory/requirements.txt
 ```bash
 python -m pytest -v extensions/long_term_memory/
 ```
-3a. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with:
+4. If you are not sure, if the text-generation-webiu `env` environment is active, you can list all conda environments with:
 ```bash
 conda env list
 ```
 This will list all conda environments and markse the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
 
-4. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
+5. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
 ```bash
 # Only used by the one-click installer.
 # Example:
 # --listen --api
 --extensions long_term_memory
 ```
-5. Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This wil cause an error. You will find an example under `example_character_configs`.
+6. Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This wil cause an error. You will find an example under `example_character_configs`.
 
-6. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
+7. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
-7. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
+8. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
-8. To make a backup use 7zip for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory for each character. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
+9. To make a backup use 7zip for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory for each character. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
 
 ## Migration of old memories from the forked repository to the S2k version.
 The S2k version will not touch existing memories from the old repository.
