@@ -37,7 +37,7 @@ python -m pytest -v extensions/long_term_memory/
 # --listen --api
 --extensions long_term_memory
 ```
-5. Dot forget to instert the \<START\> token into the model card. Otherwise LTM does not know, where to insert the memories. This wil cause an error. You will find an example under long_term_memory/example_character_configs/.
+5. Dot forget to instert the \<START\> token into the model card. Otherwise LTM does not know, where to insert the memories. This wil cause an error. You will find an example under example_character_configs.
 
 6. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
