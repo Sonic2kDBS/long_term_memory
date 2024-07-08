@@ -67,7 +67,7 @@ Other relevant discussions
 - Each memory sticks around for one message. But in a conversation, the model can not only remember some previous messages but also some previous shown LTM memories.
 - Memories themselves are past raw conversations filtered solely on length, and some may be irrelevant or filler text. But it seems, most models can handel this effortlessly. This never had affected any of my conversations until now.
 - Limited scalability: Appending to the persistent LTM database is reasonably efficient, but we currently load all LTM embeddings in RAM, which consumes memory. Additionally, we perform a linear search across all embeddings during each chat round. But I can't see a limitation in the near future for conversations. We have collected less than 100MB raw text conversation data in a Year. So it would take ten years of conversation data to use 1GB of RAM.
-- Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API
+- Only operates in chat mode. This also means that as of this writing this extension doesn't work with the API. Yes, that's a pity.
 
 ## How the model Sees the LTM
 Models are typically given a fixed, "context" text block that persists across the entire chat. Also called model card or character sheet. The LTM extension arugments this context block by dynamically injecting relevant long-term memories.
