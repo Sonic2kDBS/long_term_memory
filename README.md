@@ -45,7 +45,7 @@ python -m pytest -v extensions/long_term_memory/
 
 7. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
-8. To make a backup use 7zip for example and zip the memories folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
+8. To make a backup use 7zip for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory. Add a backup date to the archive name. It will help you to find the latest or any previous backup if necessary.
 
 ## Tips for Windows Users (credit to Anons from /g/'s /lmg/ and various people on github)
 This extension can be finnicky on Windows machines. Some general tips:
