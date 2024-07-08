@@ -38,7 +38,7 @@ conda env list
 ```
 This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example that the command conda could not be found, you are probably not in the env environment.
 
-5. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. If all goes well, you should see it reporting "ok"
+5. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
 ```bash
 # Only used by the one-click installer.
 # Example:
