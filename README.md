@@ -52,7 +52,7 @@ The S2k version will not touch existing memories from the old repository.
 
 But you can migrate existing memories to the S2k version.
 
-If you don't have or migrate old memories, a new database will be created.
+If you don't have or want to migrate old memories, a new database will be created.
 
 Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. This is different from the forked repository. If you want to use existing memories just move or copy them from `bot_memories` to `model_memories`. This is also a good moment to do a backup.
 ```bash
