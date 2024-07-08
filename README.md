@@ -54,8 +54,8 @@ python -m pytest -v extensions/long_term_memory/
 
 9. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
 
-## Migration of old memories from the forked repository to the S2k version.
-The S2k version will not touch existing memories from the old repository.
+## Migration of old memories from the forked repository to the LTM S2k version.
+The LTM S2k version will not touch existing memories from the old repository.
 
 But you can migrate existing memories to the S2k version.
 
