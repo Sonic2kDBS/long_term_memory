@@ -57,7 +57,7 @@ python -m pytest -v extensions/long_term_memory/
 10. Don’t Panic. If some memories are not as correct, as you want them, just relax. The sentence-transformer model will know, if the memory fits to future conversations and your conversation model will also understand how it can handle the memory, if it is selected and loaded. At the beginning I often had the thought of making a better database by deleting the one or the other memory. But I never did and now I know, that was the best decision. So please relax. More real memories are better. They outnumber some bad ones naturally.  
 
 ## How to update LTM S2k version
-Just open the file browser and navigate to the `extensions/long_term_memory/` folder. Under Windows click on the adressbar once and then type cmd and press enter. You should now have an open Terminal. Similair under Linux. Now just type:
+Just open the file browser and navigate to the `extensions/long_term_memory/` folder. Under Windows click on the adressbar once and then type cmd and press enter. You should now have an open Terminal. Similar under Linux. Now just type:
 ```bash
 git pull
 ```
