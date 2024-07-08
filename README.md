@@ -170,7 +170,7 @@ The following is the new config file which uses `AFTER_NORMAL_CONTEXT_BUT_BEFORE
 ```
 ### `ltm_context.injection_location`
 One of two values, `BEFORE_NORMAL_CONTEXT` or `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`. They behave as written on the tin.
-If you use `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`, within the `context` field of your character config, you must add a `<START>` token AFTER the character description and BEFORE the example conversation. See [the following example](https://github.com/wawawario2/long_term_memory/blob/master/example_character_configs/Example_with_START_token.yaml).
+If you use `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`, within the `context` field of your character config, you must add a `<START>` token AFTER the character description and BEFORE the example conversation. See [the following wawawario2 example](https://github.com/wawawario2/long_term_memory/blob/master/example_character_configs/Example_with_START_token.yaml) or [the S2k version example](https://github.com/Sonic2kDBS/long_term_memory/blob/main/example_character_configs/Example_with_START_token.yaml).
 
 ### `ltm_context.memory_context_template`
 This defines the sub-context that's injected into the original context. Note the embedded params surrounded by `{}`, the system will automatically fill these in for you based on the memory it fetches, you don't actually fill the values in yourself here. You also don't have to place all of these params, just place what you need:
