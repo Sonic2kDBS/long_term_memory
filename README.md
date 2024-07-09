@@ -48,13 +48,13 @@ python -m pytest -v extensions/long_term_memory/
 ```
 6. There is a new way to activate the LTM extension without editing: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
 
-7. Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This wil cause an error. You will find an example under `example_character_configs`.
+7. Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
 
 8. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
 9. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
-10. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
+10. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the folder, the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
 
 11. Don’t Panic. If some memories are not as correct, as you want them, just relax. The sentence-transformer model will know, if the memory fits to future conversations and your conversation model will also understand how it can handle the memory, if it is selected and loaded. At the beginning I often had the thought of making a better database by deleting the one or the other memory. But I never did and now I know, that was the best decision. So please relax. More real memories are better. They outnumber some bad ones naturally.  
 
