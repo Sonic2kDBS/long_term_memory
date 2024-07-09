@@ -74,7 +74,7 @@ user_data
 ├── bot_memories (old)
 │   ├── miku
 │   │   ├── long_term_memory.db
-│   │   ├── long_term_memory_embeddings.zarr
+│   │   └── long_term_memory_embeddings.zarr
 │   │       └── 0.0
 │   └── memories-will-be-saved-here.txt
 └── model_memories (new)
@@ -84,7 +84,7 @@ user_data
     │       └── 0.0
     ├── anon
     │   ├── long_term_memory.db
-    │   ├── long_term_memory_embeddings.zarr
+    │   └── long_term_memory_embeddings.zarr
     │       └── 0.0
     └── memories-will-be-saved-here.txt
 ```
