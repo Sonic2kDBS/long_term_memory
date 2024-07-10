@@ -100,9 +100,8 @@ pip install torch-1.12.0+cu113 # or whichever version of pytorch was uninstalled
 This should be fixed by now.
 
 Other relevant discussions
-- [Missing dependencies](https://github.com/wawawario2/long_term_memory/discussions/23)
+- [Missing dependencies](https://github.com/wawawario2/long_term_memory/discussions/23) (should be fixed by now)
 - [Spaces in Windows usernames](https://github.com/wawawario2/long_term_memory/issues/39)
-
 ## Features
 - Memories are fetched using a semantic search, which understands the "actual meaning" of the messages.
 - Separate memories for different characters, all handled under the hood for you. (legacy users see [character namespace migration instructions](#character-namespace-migration-instructions).)
