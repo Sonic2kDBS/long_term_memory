@@ -300,7 +300,7 @@ Windows (UNTESTED!): run `export_scripts/dump_memories_to_csv.bat`
 ### Exporting your memories with a GUI
 Some Years ago I was very skeptical about monolithic saving of text data in one file. If something goes wrong, everything is gone. And what if the program or the format does not get supported anymore. So I always preferred simple and single `txt` files. Especially for notes for example. But later I understood how the SQLite DB works. I was fascinated and ready to try this new approach. Nowadays, I prefer SQLite DBs, because of their compactness, speed and (since discovered) accessibility. There are many graphical programs to just open SQLite DBs and save any table you like in csv or just in plain text. For example [SQLiteStudio](https://sqlitestudio.pl). But there are much more SQLite DB reader out there. So this point doesen't count anymore.
 
-With such a program, you can open the SQLiteDB easily and save the table of memories to csv.
+With such a program, you can open the SQLiteDB easily and save the table of memories to csv without any SQLite commands or scripts.
 You also can look for a specific memory. E.g. maybe you lost the last sentence you wrote, because of an error in the text-generation-webui. I often used this to get the last sentence back, I wrote, if it was a long text and inportant enough.
 
 Just be careful as always. I personally do a copy of the `long_term_memory.db` file to a separate folder first and rename it to `long_term_memory.cpy.db`. After that, I open the copy. I always let the original untouched. With the seconary file extension `cpy`(which means copy) I know exactly, I can't brake anything and I even can delete it later, because it is just a copy.
