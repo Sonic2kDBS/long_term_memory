@@ -66,7 +66,7 @@ git pull
 ## Migration of old memories from the forked repository to the LTM S2k version.
 The LTM S2k version will not touch existing memories from the old repository.
 
-But you can migrate existing memories to the S2k version.
+But you can migrate existing memories to the S2k version easily.
 
 If you don't have or want to migrate old memories, a new database will be created.
 
