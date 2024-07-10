@@ -97,6 +97,8 @@ This extension can be finnicky on Windows machines. Some general tips:
 ```bash
 pip install torch-1.12.0+cu113 # or whichever version of pytorch was uninstalled
 ```
+This should be fixed by now.
+
 Other relevant discussions
 - [Missing dependencies](https://github.com/wawawario2/long_term_memory/discussions/23)
 - [Spaces in Windows usernames](https://github.com/wawawario2/long_term_memory/issues/39)
