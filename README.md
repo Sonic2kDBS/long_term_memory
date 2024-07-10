@@ -303,7 +303,7 @@ Some Years ago I was very skeptical about monolithic saving of text data in one 
 With such a program, you can open the SQLiteDB easily and save the table of memories to csv without any SQLite commands or scripts.
 You also can look for a specific memory. E.g. maybe you lost the last sentence you wrote, because of an error in the text-generation-webui. I often used this to get the last sentence back, I wrote, if it was a long text and inportant enough.
 
-Just be careful as always. I personally do a copy of the `long_term_memory.db` file to a separate folder first and rename it to `long_term_memory.cpy.db`. After that, I open the copy. I always let the original untouched. With the seconary file extension `cpy`(which means copy) I know exactly, I can't brake anything and I even can delete it later, because it is just a copy.
+Just be careful as always. I personally do a copy of the `long_term_memory.db` file to a separate folder first and rename it to `long_term_memory.cpy.db`. After that, I open the copy. I always let the original untouched. With the seconary file extension `cpy` (which means copy) I know exactly, I can't brake anything and I even can delete it later, because it is just a copy.
 
 ## Some potential alternatives: 
 - (not merged) [langchain support in oobabooga](https://github.com/oobabooga/text-generation-webui/issues/665)
