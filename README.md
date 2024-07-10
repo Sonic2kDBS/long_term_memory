@@ -297,6 +297,14 @@ Your memories will be in `./user_data/bot_csv_outputs/`
 
 Windows (UNTESTED!): run `export_scripts/dump_memories_to_csv.bat`
 
-Some potential alternatives: 
+### Exporting your memories with GUI
+Some Years ago I was very skeptical about monolithic saving of text data in one file. If something goes wrong, everything is gone. And what if the program or the format does not get supported anymore. So I always preferred simple and single `txt` files. Especially for Notes for example. But later I understood how SQLite DB work I was fascinated and ready to try this new approach. Nowadays, i prefer SQLite DBs, because if their compactness, speed and (now discovered) accessibility. There are many graphical programs to just open the SQLite DB and save any table ypu like in csv or just in plain text. For example [SQLiteStudio](https://sqlitestudio.pl). But there are more out there.
+
+With such a program, you can open the SQLiteDB easily and save the table of memories to csv.
+You also can look for a specific memory. E.g. maybe you lost the last sentence you wrote, because of an error in the text-generation-webui. I often used this to get the last sentence bac, I wrote.
+
+Just be careful as always. I personally do a copy of the `long_term_memory.db` file first and rename it to `long_term_memory.cpy.db`. After that, I open the copy. I always let the original untouched. With the seconary file extension `cpy`(which means copy) i know, i can't brake anything and i can delete it later, because it is just a copy.
+
+## Some potential alternatives: 
 - (not merged) [langchain support in oobabooga](https://github.com/oobabooga/text-generation-webui/issues/665)
 - (merged) [SuperBIG](https://github.com/oobabooga/text-generation-webui/pull/1548)
