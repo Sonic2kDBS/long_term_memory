@@ -306,6 +306,9 @@ You also can look for a specific memory. E.g. maybe you lost the last sentence y
 
 Just be careful as always. I personally do a copy of the `long_term_memory.db` file to a separate folder first and rename it to `long_term_memory.cpy.db`. After that, I open the copy. I always let the original untouched. With the seconary file extension `cpy` (which means copy) I know exactly, I can't brake anything and I even can delete it later, because it is just a copy.
 
+### Why exporting your memories from the SQLite DB actually makes no sense
+This is a part of the readme, you should think about. All the Memories in the DB are managed by the LTM and the sentence_model. The Zarr directory contains the vector informations where the the memory belongs to in the database and the sci-kit software can search for the best memory to load. If you rip this apart by separating the memory from the vectors, you just keep the information, but without the relation to each other. It is much better to save the json chat history to use it elsewhere, then to extract the memories to a csv file.
+
 ## Some potential alternatives: 
 - (not merged) [langchain support in oobabooga](https://github.com/oobabooga/text-generation-webui/issues/665)
 - (merged) [SuperBIG](https://github.com/oobabooga/text-generation-webui/pull/1548)
