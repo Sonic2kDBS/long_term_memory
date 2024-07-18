@@ -22,7 +22,7 @@ from extensions.long_term_memory.utils.timestamp_parsing import (
 _CONFIG_PATH = "extensions/long_term_memory/ltm_config.json"
 _MIN_ROWS_TILL_RESPONSE = 5
 _LAST_MODEL_MESSAGE_INDEX = -3
-_LTM_STATS_TEMPLATE = """{num_memories_seen_by_model} memories are loaded for the model
+_LTM_STATS_TEMPLATE = """{num_memories_seen_by_model} memories are loaded to the model
 {num_memories_in_ram} memories are loaded in RAM
 {num_memories_on_disk} memories are saved to disk"""
 with open(_CONFIG_PATH, "rt") as handle:
@@ -120,7 +120,7 @@ def _build_augmented_context(memory_context: str, original_context: str) -> str:
 def model_prefix_modifier(string):
     """
     This function is only applied in chat mode. It modifies
-    the prefix text for the Bot and can be used to bias its
+    the prefix text for the model and can be used to bias its
     behavior.
     """
     if params["activate"]:
