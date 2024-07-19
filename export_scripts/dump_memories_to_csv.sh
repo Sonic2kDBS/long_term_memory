@@ -1,8 +1,8 @@
 #!/bin/bash
 
-BASE_DIR="./user_data/bot_memories"
+BASE_DIR="./user_data/model_memories"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")  # Format as YYYYMMDD_HHMMSS
-OUTPUT_DIR="./user_data/bot_csv_outputs/$TIMESTAMP"
+OUTPUT_DIR="./user_data/model_csv_outputs/$TIMESTAMP"
 
 # Create the output directory
 mkdir -p "$OUTPUT_DIR"

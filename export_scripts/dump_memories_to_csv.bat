@@ -10,13 +10,13 @@ if /i not "%UserInput%"=="yes" (
     exit /b
 )
 
-SET BASE_DIR=./user_data/bot_memories
+SET BASE_DIR=./user_data/model_memories
 
 REM Generate a timestamp in YYYYMMDD_HHMMSS format
 FOR /F "tokens=2 delims==" %%i in ('wmic os get localdatetime /format:list') do set datetime=%%i
 SET TIMESTAMP=%datetime:~0,8%_%datetime:~8,6%
 
-SET OUTPUT_DIR=./user_data/bot_csv_outputs/%TIMESTAMP%
+SET OUTPUT_DIR=./user_data/model_csv_outputs/%TIMESTAMP%
 
 REM Create output directory
 IF NOT EXIST "%OUTPUT_DIR%" mkdir "%OUTPUT_DIR%"
