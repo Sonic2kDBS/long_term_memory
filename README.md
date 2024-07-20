@@ -280,7 +280,7 @@ cp -r ~/bot_memories_backup_for_migration/* extensions/long_term_memory/user_dat
 
 7. Run a bot and make sure you can see all memories.
 
-## Exporting your memories
+## Exporting your memories (kept for reference)
 As of 08/21/2023 this extension is no longer in active development. Obviously you are free to continue using this extension but I'd recommend exporting your memories and moving on to another long term memory system.
 
 As of 08/21/2023, this extension does work in Ubuntu 22.04.3 LTS however there are various user setups where it may not work out of the box. I'd expect this extension to break at some point in the future.
