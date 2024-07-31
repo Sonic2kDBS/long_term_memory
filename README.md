@@ -105,7 +105,7 @@ Other relevant discussions
 ## Features
 - Fully local.
 - Memories are fetched using a semantic search, which understands the "actual meaning" of the messages.
-- Separate memories for different characters, all handled under the hood for you. (legacy users see [character namespace migration instructions](#character-namespace-migration-instructions).)
+- Separate memories for different characters, all handled under the hood for you.
 - Ability to load an arbitrary number of "memories".
 - Other configuration options, see below.
 
