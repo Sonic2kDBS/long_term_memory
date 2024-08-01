@@ -103,6 +103,7 @@ Other relevant discussions
 - [Missing dependencies](https://github.com/wawawario2/long_term_memory/discussions/23) (should be fixed by now)
 - [Spaces in Windows usernames](https://github.com/wawawario2/long_term_memory/issues/39)
 ## Features
+- Open Source.
 - Fully local.
 - Memories are fetched using a semantic search, which understands the "actual meaning" of the messages.
 - Separate memories for different characters, all handled under the hood for you.
