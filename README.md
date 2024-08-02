@@ -315,3 +315,12 @@ This is a part of the readme, you should think about. All the memories in the DB
 ## Some potential alternatives: 
 - (not merged) [langchain support in oobabooga](https://github.com/oobabooga/text-generation-webui/issues/665)
 - (merged) [SuperBIG](https://github.com/oobabooga/text-generation-webui/pull/1548)
+
+## Acknowledgements
+- wawawario2 for creating this great extension
+- Claudia Catfox for helping me testing this extension long-term and finding the right settings
+- Sally TX for testing the extension and finding bugs and weaknesses
+- Oobabooga for constantly inproving the main program text-generation-webui
+- and all the great people, who have paricipated and helped to improve this extension and the main program
+
+love Rangar / Sonic2k
