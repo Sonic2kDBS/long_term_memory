@@ -323,6 +323,6 @@ This is a part of the readme, you should think about. All the memories in the DB
 - the little all-mpnet-base-v2 model for doing such a great job
 - the people who created all-mpnet-base-v2
 - Oobabooga for constantly inproving the main program text-generation-webui
-- and all the great people, who have paricipated and helped to improve this extension and the main program
+- and all the great people, who have participated and helped to improve this extension and the main program
 
 love Rangar / Sonic2k
