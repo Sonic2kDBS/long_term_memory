@@ -320,6 +320,7 @@ This is a part of the readme, you should think about. All the memories in the DB
 - wawawario2 for creating this great extension
 - Claudia Catfox for helping me testing this extension long-term and finding the right settings
 - Sally TX for helping me testing the extension and finding bugs and weaknesses
+- the little all-mpnet-base-v2 model for doing such a great job
 - Oobabooga for constantly inproving the main program text-generation-webui
 - and all the great people, who have paricipated and helped to improve this extension and the main program
 
