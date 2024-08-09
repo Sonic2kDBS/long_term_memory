@@ -228,6 +228,8 @@ Our model is intented to be used as a sentence and short paragraph encoder. Give
 
 And oh boy, does it a good Job.
 
+Q: [https://huggingface.co/sentence-transformers/all-mpnet-base-v2](https://huggingface.co/sentence-transformers/all-mpnet-base-v2)
+
 ## How You Can Help
 - ~~We need assistance with prompt engineering experimentation. How should we formulate the LTM injection?~~
 - ~~Test the system and try to break it, report any bugs you find.~~
