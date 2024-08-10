@@ -82,7 +82,7 @@ user_data
 └── model_memories (new)
     ├── miku
     │   ├── long_term_memory.db
-    │   ├── long_term_memory_embeddings.zarr
+    │   └── long_term_memory_embeddings.zarr
     │       └── 0.0
     ├── anon
     │   ├── long_term_memory.db
