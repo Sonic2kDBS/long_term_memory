@@ -21,17 +21,19 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 ## How to Run (updated 2024)
 1. Setup text-generation-webui: Clone [oobabooga's  original repository](https://github.com/oobabooga/text-generation-webui) and follow the instructions until you can chat with a model.
 
-2. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory.
+2. Instert the <START> token into the model card of your choice. You will find an example under `example_character_configs`.
+
+3. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory.
 ```bash
 git clone https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
 
-3. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: `cmd_windows.bat` and for Linux use: `cmd_linux.sh`). If you are not sure, if the text-generation-webui `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example, that the command `conda` could not be found, you are probably not in the `env` environment. Make sure it is active before continuing.
+4. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: `cmd_windows.bat` and for Linux use: `cmd_linux.sh`). If you are not sure, if the text-generation-webui `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example, that the command `conda` could not be found, you are probably not in the `env` environment. Make sure it is active before continuing.
 ```bash
 conda env list
 ```
 
-4. Within the `env` conda environment, run the following commands to install dependencies and run tests:
+5. Within the `env` conda environment, run the following commands to install dependencies and run tests:
 ```bash
 pip install -r extensions/long_term_memory/requirements.txt
 ```
@@ -39,24 +41,25 @@ pip install -r extensions/long_term_memory/requirements.txt
 python -m pytest -v extensions/long_term_memory/
 ```
 
-5. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
+6. Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
 ```bash
 # Only used by the one-click installer.
 # Example:
 # --listen --api
 --extensions long_term_memory
 ```
-6. There is a new way to activate the LTM extension without editing: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
 
-7. Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
+7. There is a new way to activate the LTM extension without editing: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
 
-8. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
+8. Remember: Dot forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
 
-9. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
+9. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
-10. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the folder, the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
+10. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
-11. Don’t Panic. If some memories are not as correct, as you want them, just relax. The sentence-transformer model will know, if the memory fits to future conversations and your conversation model will also understand how it can handle the memory, if it is selected and loaded. At the beginning I often had the thought of making a better database by deleting the one or the other memory. But I never did and now I know, that was the best decision. So please relax. More real memories are better. They outnumber some bad ones naturally.  
+11. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the folder, the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
+
+12. Don’t Panic. If some memories are not as correct, as you want them, just relax. The sentence-transformer model will know, if the memory fits to future conversations and your conversation model will also understand how it can handle the memory, if it is selected and loaded. At the beginning I often had the thought of making a better database by deleting the one or the other memory. But I never did and now I know, that was the best decision. So please relax. More real memories are better. They outnumber some bad ones naturally.  
 
 ## How to update LTM S2k version
 Just open the file browser and navigate to the `extensions/long_term_memory/` folder. Under Windows click on the adressbar once and then type `cmd` and press enter. You should now have an open Terminal. Similar under Linux. Now just type:
