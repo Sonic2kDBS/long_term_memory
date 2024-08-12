@@ -21,7 +21,7 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 ## How to Run (updated 2024)
 1. Setup text-generation-webui: Clone [oobabooga's  original repository](https://github.com/oobabooga/text-generation-webui) and follow the instructions until you can chat with a model.
 
-2. Instert the <START> token into the model card of your choice. You will find an example under `example_character_configs`.
+2. Instert the `<START>` token into the model card of your choice. You will find an example under `example_character_configs`.
 
 3. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory.
 ```bash
