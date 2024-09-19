@@ -41,7 +41,7 @@ pip install -r extensions/long_term_memory/requirements.txt
 python -m pytest -v extensions/long_term_memory/
 ```
 
-6. Not recommendet anymore since 2024-09. It seems text-generation-webui goes away from using this kind of configutation. It still works with LTM but I saw upcoming problems with different new settings. **Skip and use `7.` instead.** Here is the old description: Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
+6. [deprecated] Not recommendet anymore since 2024-09. It seems text-generation-webui goes away from using this kind of configutation. It still works with LTM but I saw upcoming problems with different new settings. **Skip and use `7.` instead.** Here is the old description: Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
 ```bash
 (Example how the file may look like after edited)
 # Only used by the one-click installer.
