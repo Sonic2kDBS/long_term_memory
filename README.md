@@ -151,7 +151,7 @@ I remember = (3 days ago, Miku said: "So Anon, your favorite color is blue? That
 ## Configuration (updated 2024)
 You can configure the behavior of the LTM extension by modifying the `ltm_config.json` file. But after all the trying for months, I recommend keeping the `ltm_config.json` S2k version.
 
-The following is an example of the old config file which uses `BEFORE_NORMAL_CONTEXT`. It forces the model to integrate seen memories:
+The following is an example of the **old** config file which uses `BEFORE_NORMAL_CONTEXT`. It forces the model to integrate seen memories:
 ```javascript
 {
     "ltm_context": {
@@ -169,7 +169,7 @@ The following is an example of the old config file which uses `BEFORE_NORMAL_CON
     }
 }
 ```
-The following is the new config file which uses `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`. It tells the model the memories but keeps it open if they become used in the context:
+The following is the **new** config file which uses `AFTER_NORMAL_CONTEXT_BUT_BEFORE_MESSAGES`. It tells the model the memories but keeps it open if they become used in the context:
 ```javascript
 {
     "ltm_context": {
