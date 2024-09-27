@@ -3,8 +3,8 @@
 
 def clean_character_message(name: str, message: str) -> str:
     """
-    Sometimes the chatbot will respond multiple times in a single
-    message, each response being prefixed with '{bot_name}: '.
+    Sometimes the model will respond multiple times in a single
+    message, each response being prefixed with '{model_name}: '.
     This function parses each sub-message and returns them as a single
     continuous sentence.
     """
