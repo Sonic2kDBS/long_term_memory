@@ -5,11 +5,11 @@ import string
 
 import pytest
 
-from extensions.long_term_memory.core.memory_database import (
+from user_data.extensions.long_term_memory.core.memory_database import (
     LtmDatabase,
 )
 
-from extensions.long_term_memory.constants import (
+from user_data.extensions.long_term_memory.constants import (
     DATABASE_NAME,
     EMBEDDINGS_NAME,
 )
