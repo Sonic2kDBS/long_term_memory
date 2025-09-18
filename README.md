@@ -1,5 +1,5 @@
 # Long-Term-Memory extension for the Oobabooga Text-Generation-WebUI (S2k version) for WebUI version v3.7.1 or higher
-### Use the 2024 branch/version `-b 2024` for older WebUI versions because v3.7.1 added support for installing user extensions in user_data/extensions/ for convenience, which is used.
+### Use the 2024 branch/version `-b 2024` for older WebUI versions because v3.7.1 added support for installing user extensions in user_data/extensions/ for convenience, which is used by S2k LTM.
 
 This is a Fork of the LTM extension from [wawawario2](https://github.com/wawawario2) by [Sonic2k](https://github.com/Sonic2kDBS). I used it a while now, actually more than a year and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
 Instead of telling the model to mention the memories, they are now just part of the context. The model just gets the information, that those appearing lines from the database are memories from previous conversations. This way the model can decide if it uses the memories or go a different way. It gets a glimpse of what was sayd before and this makes the conversation much more natural. Over the time of some conversation lines more memories appear bit by bit and the model remembers them partly. So surpising things happen within the conversation.
