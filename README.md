@@ -42,7 +42,7 @@ pip install -r user_data/extensions/long_term_memory/requirements.txt
 python -m pytest -v user_data/extensions/long_term_memory/
 ```
 
-6. There is a new way to activate the LTM extension without editing CMD_FLAGS.txt: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
+6. There is a new way to activate the LTM extension without editing CMD_FLAGS.txt: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt.
 
 7. Remember: Don't forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
 
