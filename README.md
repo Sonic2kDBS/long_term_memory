@@ -42,23 +42,11 @@ pip install -r user_data/extensions/long_term_memory/requirements.txt
 python -m pytest -v user_data/extensions/long_term_memory/
 ```
 
-6. [deprecated] Not recommendet anymore since 2024-09. It seems text-generation-webui goes away from using this kind of configuration. It currently still works with LTM but I saw upcoming problems with different new settings in the webui. **Skip and use `7.` instead.** Here is the old description: Run the server with the LTM extension: Edit CMD_FLAGS.txt and add the extension. Start the server with `start_windows.bat` or `start_linux.sh` (or with something else, depending on your configuration). If all goes well, you should see it reporting "ok"
-```bash
-(Example how the file may look like after edited)
-# Only used by the one-click installer.
-# Example:
-# --listen --api
---extensions long_term_memory
-```
-```bash
---extensions long_term_memory
-```
+1. There is a new way to activate the LTM extension without editing CMD_FLAGS.txt: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
 
-7. There is a new way to activate the LTM extension without editing: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt. Its up to you, which way you pefer. 
+1. Remember: Don't forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
 
-8. Remember: Don't forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
-
-9. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
+1. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
 10. Memories will be saved in `extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
