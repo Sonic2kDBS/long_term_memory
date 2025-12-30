@@ -37,7 +37,7 @@ pip install -r user_data/extensions/long_term_memory/requirements.txt
 ```bash
 python -m pytest -v user_data/extensions/long_term_memory/
 ```
-These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay pationed until the test starts. You will get no hint.
+These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint util the dowload is finished.
 
 6. Start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt.
 
