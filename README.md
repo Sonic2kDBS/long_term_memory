@@ -30,11 +30,10 @@ git clone https://github.com/Sonic2kDBS/long_term_memory.git user_data/extension
 conda env list
 ```
 
-5. Within the `env` conda environment, run the following commands to install dependencies and run tests:
+5. Within the `env` conda environment, run the following commands to install dependencies and run tests. These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint util the dowload is finished.
 ```bash
 pip install -r user_data/extensions/long_term_memory/requirements.txt
 ```
-These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint util the dowload is finished.
 ```bash
 python -m pytest -v user_data/extensions/long_term_memory/
 ```
