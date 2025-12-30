@@ -1,4 +1,4 @@
-# Long-Term-Memory extension for the Oobabooga Text-Generation-WebUI (S2k version) for WebUI version v3.7.1 or later
+# Long-Term-Memory extension for the Oobabooga Text-Generation-WebUI (S2k version 2025) for WebUI version v3.7.1 or later
 #### Use the 2024 branch/version `-b 2024` for older WebUI versions because v3.7.1 added support for installing user extensions in user_data/extensions/ for convenience, which is used by S2k LTM.
 
 This is a Fork of the LTM extension from [wawawario2](https://github.com/wawawario2) by [Sonic2k](https://github.com/Sonic2kDBS). I used it a while now, actually more than a year and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
@@ -13,10 +13,6 @@ NOTICE TO WINDOWS USERS: If you have a space in your username, you may have [pro
 
 NOTICE: This extension may conflict with [other extensions that modify the context](https://github.com/wawawario2/long_term_memory/issues/44)
 
-NOTICE: If you have been using this extension on or before 05/06/2023, you should follow the [character namespace migration instructions](#character-namespace-migration-instructions).
-
-NOTICE: If you have been using this extension on or before 04/01/2023, you should follow the [extension migration instructions](#extension-migration-instructions).
-
 Welcome to the experimental repository for the long-term memory (LTM) extension for oobabooga's Text Generation Web UI. The goal of the LTM extension is to enable the chatbot to "remember" conversations long-term. Please note that this is an early-stage experimental project, and perfect results should not be expected. This project has been tested on Ubuntu LTS 22.04. Other people have tested it successfully on Windows. Compatibility with macOS is unknown.
 
 ## How to Run (updated 2025)
@@ -24,12 +20,12 @@ Welcome to the experimental repository for the long-term memory (LTM) extension 
 
 2. Instert the `<START>` token into the model card of your choice. You will find an example under `example_character_configs`.
 
-3. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `extensions` directory.
+3. Make sure you're in the `text-generation-webui` directory and clone this repository directly into the `user_data/extensions` directory.
 ```bash
 git clone https://github.com/Sonic2kDBS/long_term_memory.git user_data/extensions/long_term_memory
 ```
 
-4. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: `cmd_windows.bat` and for Linux use: `cmd_linux.sh`). If you are not sure, if the text-generation-webui `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example, that the command `conda` could not be found, you are probably not in the `env` environment. Make sure it is active before continuing.
+4. Activate the `env` conda environment (from the linked text-generation-webui instructions)(or for Windows use: `cmd_windows.bat` and for Linux use: `cmd_linux.sh`). If you are not sure, if the text-generation-webui `env` environment is active, you can list all conda environments with `conda env list`. This will list all conda environments and marks the active one with an Asterisk `*`. If you get an error, for example, that the command `conda` could not be found, you are probably not in the `env` environment. Make sure it is active before continuing. This step is important!
 ```bash
 conda env list
 ```
@@ -41,8 +37,9 @@ pip install -r user_data/extensions/long_term_memory/requirements.txt
 ```bash
 python -m pytest -v user_data/extensions/long_term_memory/
 ```
+These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay pationed until the test starts. You will get no hint.
 
-6. There is a new way to activate the LTM extension without editing CMD_FLAGS.txt: You can start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt.
+6. Start the server normally. Then at the top menu bar under `Session` You will find the `Available extensions` block. There you can check the checkbox `☑` in front of `long_term_memory`. Then apply the changes and start LTM with `Apply flags/extensions and restart`. Watch the Terminal. If the extension starts correctly, you can click `Save UI defaults to settings.yaml` to save your selection of extensions and make the automatic startup permanemt.
 
 7. Remember: Don't forget to instert the `<START>` token into the model card. Otherwise LTM does not know, where to insert the memories. This will cause an error. You will find an example under `example_character_configs`.
 
@@ -279,25 +276,6 @@ cp -r ~/bot_memories_backup_for_migration/* extensions/long_term_memory/user_dat
 6. If you have a custom configuration file, copy it to `extensions/long_term_memory`. Note the location has changed from before.
 
 7. Run a bot and make sure you can see all memories.
-
-## Exporting your memories
-### Exporting your memories with a script (kept for reference)
-As of 08/21/2023 this extension is no longer in active development. Obviously you are free to continue using this extension but I'd recommend exporting your memories and moving on to another long term memory system.
-
-As of 08/21/2023, this extension does work in Ubuntu 22.04.3 LTS however there are various user setups where it may not work out of the box. I'd expect this extension to break at some point in the future.
-
-To export your memories:
-```bash
-cd extensions/long_term_memory
-```
-
-IMPORTANT: Back up the `user_data` directory before proceeding. Only then run:
-```bash
-./export_scripts/dump_memories_to_csv.sh # Please run the script from the long_term_memory directory
-```
-Your memories will be in `./user_data/bot_csv_outputs/`
-
-Windows (UNTESTED!): run `export_scripts/dump_memories_to_csv.bat`
 
 ### Exporting your memories with a GUI
 Some Years ago I was very skeptical about monolithic saving of text data in one file. If something goes wrong, everything is gone. And what if the program or the format does not get supported anymore. So I always preferred simple and single `txt` files. Especially for notes for example. But later I understood how the SQLite DB works. I was fascinated and ready to try this new approach. Nowadays, I prefer SQLite DBs, because of their compactness, speed and (since discovered) accessibility. There are many graphical programs to just open SQLite DBs and save any table you like in csv or just in plain text. For example [SQLiteStudio](https://sqlitestudio.pl). But there are much more SQLite DB reader out there. So this point doesen't count anymore.
