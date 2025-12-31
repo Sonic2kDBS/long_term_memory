@@ -1,7 +1,6 @@
 # Long-Term-Memory extension for the Oobabooga Text-Generation-WebUI (S2k version 2025) for WebUI version v3.7.1 or later
 #### Use the 2024 branch/version `-b 2024` for older WebUI versions because v3.7.1 added support for installing user extensions in user_data/extensions/ for convenience, which is used by S2k LTM.
 
-kleiner gleich v3.7.1
 ```bash
 git clone -b 2024 https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
