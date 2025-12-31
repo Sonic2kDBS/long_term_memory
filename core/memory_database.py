@@ -9,14 +9,14 @@ from sentence_transformers import SentenceTransformer
 from sklearn.neighbors import NearestNeighbors
 import zarr
 
-from extensions.long_term_memory.constants import (
+from user_data.extensions.long_term_memory.constants import (
     CHUNK_SIZE,
     DATABASE_NAME,
     EMBEDDINGS_NAME,
     EMBEDDING_VECTOR_LENGTH,
     SENTENCE_TRANSFORMER_MODEL,
 )
-from extensions.long_term_memory.core.queries import (
+from user_data.extensions.long_term_memory.core.queries import (
     CREATE_TABLE_QUERY,
     DROP_TABLE_QUERY,
     FETCH_DATA_QUERY,

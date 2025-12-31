@@ -1,6 +1,6 @@
 """Tests for the chat_parsing module."""
 
-from extensions.long_term_memory.utils.chat_parsing import (
+from user_data.extensions.long_term_memory.utils.chat_parsing import (
     clean_character_message,
 )
 

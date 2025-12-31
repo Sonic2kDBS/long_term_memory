@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 import pytest
 
-from extensions.long_term_memory.utils.timestamp_parsing import (
+from user_data.extensions.long_term_memory.utils.timestamp_parsing import (
     get_time_difference_message,
 )
 

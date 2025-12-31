@@ -11,15 +11,15 @@ import modules.shared as shared
 from modules.chat import generate_chat_prompt
 from modules.html_generator import fix_newlines
 
-from extensions.long_term_memory.core.memory_database import LtmDatabase
-from extensions.long_term_memory.utils.chat_parsing import clean_character_message
-from extensions.long_term_memory.utils.timestamp_parsing import (
+from user_data.extensions.long_term_memory.core.memory_database import LtmDatabase
+from user_data.extensions.long_term_memory.utils.chat_parsing import clean_character_message
+from user_data.extensions.long_term_memory.utils.timestamp_parsing import (
     get_time_difference_message,
 )
 
 
 # === Internal constants (don't change these without good reason) ===
-_CONFIG_PATH = "extensions/long_term_memory/ltm_config.json"
+_CONFIG_PATH = "user_data/extensions/long_term_memory/ltm_config.json"
 _MIN_ROWS_TILL_RESPONSE = 5
 _LAST_MODEL_MESSAGE_INDEX = -3
 _LTM_STATS_TEMPLATE = """{num_memories_seen_by_model} memories are loaded to the model
@@ -36,7 +36,7 @@ debug_texts = {
     "current_context_block": "(None)",
 }
 memory_database = LtmDatabase(
-    pathlib.Path("./extensions/long_term_memory/user_data/model_memories/"),
+    pathlib.Path("./user_data/extensions/long_term_memory/user_data/model_memories/"),
     num_memories_to_fetch=_CONFIG["ltm_reads"]["num_memories_to_fetch"],
 )
 # This bias string is currently unused, feel free to try using it
