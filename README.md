@@ -2,7 +2,7 @@
 #### Use the 2024 branch/version `-b 2024` for older WebUI versions because v3.7.1 added support for installing user extensions in user_data/extensions/ for convenience, which is used by S2k LTM.
 
 ```bash
-git clone -b 2024 https://github.com/Sonic2kDBS/long_term_memory.git user_data/extensions/long_term_memory
+git clone -b 2024 https://github.com/Sonic2kDBS/long_term_memory.git extensions/long_term_memory
 ```
 
 This is a Fork of the LTM extension from [wawawario2](https://github.com/wawawario2) by [Sonic2k](https://github.com/Sonic2kDBS). I used it a while now, actually more than two years and I want to share some changes I did. Those changes may not fit for everyone but for me, it better fits my usecase.
