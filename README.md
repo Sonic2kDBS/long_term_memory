@@ -34,7 +34,7 @@ git clone https://github.com/Sonic2kDBS/long_term_memory.git user_data/extension
 conda env list
 ```
 
-5. Within the `env` conda environment, run the following commands to install dependencies and run tests. These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint util the dowload is finished.
+5. Within the `env` conda environment, run the following commands to install dependencies and run tests. These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint until the dowload is finished.
 ```bash
 pip install -r user_data/extensions/long_term_memory/requirements.txt
 ```
@@ -53,7 +53,7 @@ python -m pytest -v user_data/extensions/long_term_memory/
 10. Don’t Panic. If there is a startup error, read 2. If some memories are not as correct, as you want them, just relax. The sentence-transformer model will know, if the memory fits to future conversations and your conversation model will also understand how it can handle the memory, if it is selected and loaded. At the beginning I often had the thought of making a better database by deleting the one or the other memory. But I never did and now I know, that was the best decision. So please relax. More real memories are better. They outnumber some bad ones naturally.  
 
 ## How to update LTM S2k version
-Just open the file browser and navigate to the `extensions/long_term_memory/` folder. Under Windows click on the adressbar once and then type `cmd` and press enter. You should now have an open Terminal. Similar under Linux. Now just type:
+Just open the file browser and navigate to the `user_data/extensions/long_term_memory/` folder. Under Windows click on the adressbar once and then type `cmd` and press enter. You should now have an open Terminal. Similar under Linux. Now just type:
 ```bash
 git pull
 ```
