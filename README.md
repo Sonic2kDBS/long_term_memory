@@ -34,7 +34,7 @@ git clone https://github.com/Sonic2kDBS/long_term_memory.git user_data/extension
 conda env list
 ```
 
-5. Within the `env` conda environment, run the following commands to install dependencies and run tests. These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint util the dowload is finished.
+5. Within the `env` conda environment, run the following commands to install dependencies and run tests. These Tests dowload the all-mpnet-base-v2 model, which takes up to one minute. Stay patiened until the test starts. You will get no hint until the dowload is finished.
 ```bash
 pip install -r user_data/extensions/long_term_memory/requirements.txt
 ```
@@ -46,7 +46,7 @@ python -m pytest -v user_data/extensions/long_term_memory/
 
 7. Chat normally with the model and observe the console for LTM write/load status. Please note that LTM-stored memories will only be visible to the model during your NEXT session, though this behavior can be overridden via the UI. Additionally please use the same name for yourself across sessions, otherwise the model may get confused when trying to understand memories (example: if you have used "anon" as your name in the past, don't use "Anon" in the future)
 
-8. Memories will be saved in `user_data/extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
+8. Memories will be saved in `user_data/user_data/extensions/long_term_memory/user_data/model_memories/`. Back them up if you plan to mess with the code. If you want to fully reset your models's memories, simply delete the files inside that directory. Please don't.
 
 9. To make a backup use [7-Zip](https://www.7-zip.org/) for example and zip the `model_memories` folder. It should contan the folder, the SQLite DB and the zarr directory for each character. Add a backup date to the archive name (e.g. `model_memories.2024-07-07.bak.7z`). It will help you to find the latest or any previous backup if necessary.
 
